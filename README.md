@@ -1,2 +1,2 @@
 # UAB-Statybviete
-Website for UAB statybviete
+Website for UAB Statybviete
