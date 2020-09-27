@@ -1,10 +1,13 @@
 import React from "react";
 
 import "./ContentTitle.scss";
+
 const ContentTitle = ({ children }) => {
   return (
     <header className="content-title">
-      <p>{children}</p>
+      <div className="container">
+        <p>{children}</p>
+      </div>
     </header>
   );
 };

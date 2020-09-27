@@ -5,9 +5,9 @@ import "./Home.scss";
 const Home = () => {
   return (
     <section className="home-page">
-      <div className="container">
-        <ContentTitle>Home</ContentTitle>
-      </div>
+      <ContentTitle>Home</ContentTitle>
+
+      <div className="container"></div>
     </section>
   );
 };
