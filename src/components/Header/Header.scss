@@ -1,3 +1,9 @@
-.header-logo {
-  color: #303236;
+.header-container {
+  display: inline;
+
+  img {
+    width: 125px;
+    height: 125px;
+    cursor: pointer;
+  }
 }

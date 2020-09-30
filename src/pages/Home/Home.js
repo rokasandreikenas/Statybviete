@@ -5,7 +5,7 @@ import "./Home.scss";
 const Home = () => {
   return (
     <section className="home-page">
-      <ContentTitle>Home</ContentTitle>
+      <ContentTitle>Apie mus</ContentTitle>
 
       <div className="container"></div>
     </section>
