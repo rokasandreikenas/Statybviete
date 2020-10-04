@@ -3,14 +3,26 @@ import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
 import "./EstimateTable.scss";
 
-const EstimateTable = ({ list }) => {
+const EstimateTable = ({ list, inputs, handleChange }) => {
+  console.log(inputs);
+
   return (
-    <table>
+    <table className="estimate-table">
       <TableHeader />
       <tbody>
-        {list.map((item, index) => (
-          <TableRow key={index} item={item} />
-        ))}
+        {list.map((item, index) => {
+          const inputArrValues = Object.values(inputs);
+          const inputArrKeys = Object.keys(inputs);
+          return (
+            <TableRow
+              key={index}
+              item={item}
+              name={inputArrKeys[index]}
+              quantity={inputArrValues[index]}
+              handleChange={handleChange}
+            />
+          );
+        })}
       </tbody>
     </table>
   );

@@ -4,10 +4,10 @@ const TableHeader = () => (
   <thead>
     <tr>
       <th></th>
-      <th>Darbų kaina, Eur</th>
+      <th>Darbų kaina, €</th>
       <th>Kiekis</th>
       <th>Mato vienetas</th>
-      <th>Suma, Eur</th>
+      <th>Suma, €</th>
     </tr>
   </thead>
 );
