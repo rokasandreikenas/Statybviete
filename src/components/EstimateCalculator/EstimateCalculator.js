@@ -1,9 +1,11 @@
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import TabInfo from "../../static/TabInfo";
 
+import TabInfo from "../../static/TabInfo";
+import Electricity from "../../static/Electricity";
 import "./EstimateCalculator.scss";
+import EstimateTable from "./EstimateTable/EstimateTable";
 
 const EstimateCalculator = () => {
   return (
@@ -11,22 +13,24 @@ const EstimateCalculator = () => {
       <div className="tab-lis">
         <Tabs>
           <TabList>
-            {TabInfo.map((tab) => {
-              <Tab>
-                <img src={tab.image} alt={image.imageInfo} />
-                {image.name}
-              </Tab>;
-            })}
+            {TabInfo &&
+              TabInfo.map((tab, index) => (
+                <Tab key={index}>
+                  <img src={tab.image} alt={tab.imageInfo} />
+                  {tab.name}
+                </Tab>
+              ))}
           </TabList>
 
-          <TabPanel>
-            <h2>Grindys</h2>
-          </TabPanel>
           <TabPanel>
             <h2>Sienos/Lubos</h2>
           </TabPanel>
           <TabPanel>
-            <h2>Elektra</h2>
+            <h2>Grindys</h2>
+          </TabPanel>
+
+          <TabPanel>
+            <EstimateTable list={Electricity} />
           </TabPanel>
           <TabPanel>
             <h2>Vonia</h2>
