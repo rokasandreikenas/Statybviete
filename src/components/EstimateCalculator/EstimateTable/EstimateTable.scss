@@ -1,15 +1,53 @@
+.table-wrap {
+    padding: 20px 20px 0px 20px;
+}
+
 .estimate-table {
     border-collapse: collapse;
+    background: white;
     width: 100%;
     margin-bottom: 20px;
-    td,
-    th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 30px 40px rgba(0, 0, 0, 0.1);
+
+    tr {
+        height: 50px;
+        cursor: default;
     }
 
-    tr:nth-child(even) {
-        background-color: #dddddd;
+    thead {
+        background-color: #428bff;
+
+        th {
+            font-size: 18px;
+            color: #fff;
+            line-height: 1.6;
+            font-weight: 400;
+            background: rgba(0, 0, 0, 0.25);
+        }
     }
+
+    tbody {
+        tr {
+            color: #303236;
+            border-bottom: 1px solid #f2f2f2;
+
+            &:hover {
+                background-color: #dce9ff;
+            }
+        }
+        td {
+            font-size: 16px;
+        }
+
+        td:nth-child(1) {
+            padding-left: 20px;
+        }
+    }
+
+    // tr:nth-child(even) {
+    //     background-color: #dddddd;
+    // }
 }
