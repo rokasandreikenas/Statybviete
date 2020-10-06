@@ -6,12 +6,13 @@ import TabInfo from "../../static/TabInfo";
 import Electricity from "../../static/Electricity";
 import "./EstimateCalculator.scss";
 import EstimateTable from "./EstimateTable/EstimateTable";
+import TotalSumContainer from "../TotalSumContainer";
 
 const EstimateCalculator = () => {
   const [electricityQuantity, setElectricityQuantity] = useState({
-    first: 0,
-    second: 0,
-    third: 0,
+    newElectricityPointsInstallation: 0,
+    electricalInstallation: 0,
+    luminaireInstallation: 0,
   });
 
   const handleElectricityQuantityChange = (evt) => {
@@ -21,6 +22,16 @@ const EstimateCalculator = () => {
       [evt.target.name]: value,
     });
   };
+
+  const sum = Object.values(electricityQuantity).map((item, index) => {
+    const itemSum = item * Electricity[index].price;
+    let total = 0;
+    total = +itemSum;
+    return total;
+  });
+
+  const totalSum = sum.reduce((a, b) => a + b);
+
   return (
     <div className="container">
       <Tabs>
@@ -51,6 +62,7 @@ const EstimateCalculator = () => {
           <h2>Vonia</h2>
         </TabPanel>
       </Tabs>
+      <TotalSumContainer title="Viso" sumValue={totalSum} />
     </div>
   );
 };

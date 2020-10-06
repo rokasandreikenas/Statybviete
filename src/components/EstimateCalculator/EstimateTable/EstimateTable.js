@@ -4,8 +4,6 @@ import TableRow from "./TableRow";
 import "./EstimateTable.scss";
 
 const EstimateTable = ({ list, inputs, handleChange }) => {
-  console.log(inputs);
-
   return (
     <table className="estimate-table">
       <TableHeader />
@@ -13,6 +11,7 @@ const EstimateTable = ({ list, inputs, handleChange }) => {
         {list.map((item, index) => {
           const inputArrValues = Object.values(inputs);
           const inputArrKeys = Object.keys(inputs);
+          let rowSum = inputArrValues[index] * item.price;
           return (
             <TableRow
               key={index}
@@ -20,6 +19,7 @@ const EstimateTable = ({ list, inputs, handleChange }) => {
               name={inputArrKeys[index]}
               quantity={inputArrValues[index]}
               handleChange={handleChange}
+              sum={rowSum}
             />
           );
         })}

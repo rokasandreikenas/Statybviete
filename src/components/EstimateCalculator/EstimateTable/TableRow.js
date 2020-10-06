@@ -1,14 +1,19 @@
 import React from "react";
 
-const TableRow = ({ item, name, quantity, handleChange }) => (
+const TableRow = ({ item, name, quantity, sum, handleChange }) => (
   <tr>
     <td>{item.title}</td>
     <td>€ {item.price}</td>
     <td>
-      <input type="text" value={quantity} onChange={handleChange} name={name} />
+      <input
+        type="number"
+        value={quantity}
+        onChange={handleChange}
+        name={name}
+      />
     </td>
     <td>{item.unit}</td>
-    <td>€ {item.price * quantity}</td>
+    <td>€ {+sum.toFixed(2)}</td>
   </tr>
 );
 
