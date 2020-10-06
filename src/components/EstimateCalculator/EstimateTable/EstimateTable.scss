@@ -32,10 +32,10 @@
     tbody {
         tr {
             color: #303236;
-            border-bottom: 1px solid #f2f2f2;
+            border-bottom: 1px solid #ececec;
 
             &:hover {
-                background-color: #dce9ff;
+                background-color: #ececec;
             }
         }
         td {
@@ -43,11 +43,78 @@
         }
 
         td:nth-child(1) {
-            padding-left: 20px;
+            // padding-left: 20px;
         }
     }
+}
 
-    // tr:nth-child(even) {
-    //     background-color: #dddddd;
-    // }
+@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+    .table-wrap {
+        padding: 0;
+    }
+
+    /* Force table to not be like tables anymore */
+    .estimate-table {
+        display: block;
+
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+            display: block;
+        }
+
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        tr {
+            height: 100%;
+            padding: 20px 10px;
+            // border: 1px solid #ccc;
+        }
+
+        td {
+            /* Behave  like a "row" */
+            border: none;
+            // border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+
+        td:nth-child(1) {
+            // padding-left: 0;
+        }
+
+        td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+
+        /*
+	Label the data
+	*/
+        td:nth-of-type(2):before {
+            content: "First Name";
+        }
+        td:nth-of-type(3):before {
+            content: "Last Name";
+        }
+        td:nth-of-type(4):before {
+            content: "Job Title";
+        }
+        td:nth-of-type(5):before {
+            content: "Favorite Color";
+        }
+    }
 }
