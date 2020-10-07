@@ -1,3 +1,5 @@
+@import "./../../scss/breakpoints";
+
 .react-tabs__tab-list {
   margin: 20px 0px;
   padding: 6px;
@@ -39,5 +41,11 @@
 
   img {
     background-image: url(../../assets/bathtub-blue.svg);
+  }
+}
+
+@include mobile {
+  .react-tabs__tab {
+    padding: 8px 18px;
   }
 }

@@ -23,14 +23,24 @@ const EstimateCalculator = () => {
     });
   };
 
-  const sum = Object.values(electricityQuantity).map((item, index) => {
-    const itemSum = item * Electricity[index].price;
-    let total = 0;
-    total = +itemSum;
-    return total;
-  });
+  // const sum = Object.values(electricityQuantity).map((item, index) => {
+  //   return item * Electricity[index].price;
+  // });
 
-  const totalSum = sum.reduce((a, b) => a + b);
+  const sum = (quantity, speciality) =>
+    Object.values(quantity).map((item, index) => {
+      return item * speciality[index].price;
+    });
+
+  const totalSum = (sum) => {
+    return sum.reduce((a, b) => a + b);
+  };
+
+  const electricitySum = sum(electricityQuantity, Electricity);
+
+  console.log(electricitySum);
+
+  // const totalSum = sum.reduce((a, b) => a + b);
 
   return (
     <div className="container">
@@ -62,7 +72,7 @@ const EstimateCalculator = () => {
           <h2>Vonia</h2>
         </TabPanel>
       </Tabs>
-      <TotalSumContainer title="Viso" sumValue={totalSum} />
+      <TotalSumContainer title="Viso" sumValue={totalSum(electricitySum)} />
     </div>
   );
 };

@@ -1,120 +1,109 @@
-.table-wrap {
-    padding: 20px 20px 0px 20px;
-}
+@import "../../../scss/breakpoints";
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 .estimate-table {
-    border-collapse: collapse;
-    background: white;
-    width: 100%;
-    margin-bottom: 20px;
-    text-align: left;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 30px 40px rgba(0, 0, 0, 0.1);
+  border-collapse: collapse;
+  background: white;
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 30px 40px rgba(0, 0, 0, 0.25);
 
+  font-family: "Roboto", sans-serif;
+
+  tr {
+    height: 50px;
+    cursor: default;
+  }
+
+  thead {
+    background-color: #428bff;
+
+    th {
+      font-size: 18px;
+      color: #fff;
+      line-height: 1.6;
+      font-weight: 400;
+      background: rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  tbody {
     tr {
-        height: 50px;
-        cursor: default;
+      color: #303236;
+      border-bottom: 1px solid #ececec;
+
+      &:hover {
+        background-color: #ececec;
+      }
+    }
+    td {
+      font-size: 16px;
     }
 
-    thead {
-        background-color: #428bff;
-
-        th {
-            font-size: 18px;
-            color: #fff;
-            line-height: 1.6;
-            font-weight: 400;
-            background: rgba(0, 0, 0, 0.25);
-        }
+    @include desktop {
+      td:nth-child(1) {
+        padding-left: 20px;
+      }
     }
-
-    tbody {
-        tr {
-            color: #303236;
-            border-bottom: 1px solid #ececec;
-
-            &:hover {
-                background-color: #ececec;
-            }
-        }
-        td {
-            font-size: 16px;
-        }
-
-        td:nth-child(1) {
-            // padding-left: 20px;
-        }
-    }
+  }
 }
 
-@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
-    .table-wrap {
-        padding: 0;
+@include mobile-tablet {
+  .estimate-table {
+    display: block;
+
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
     }
 
-    /* Force table to not be like tables anymore */
-    .estimate-table {
-        display: block;
-
-        thead,
-        tbody,
-        th,
-        td,
-        tr {
-            display: block;
-        }
-
-        /* Hide table headers (but not display: none;, for accessibility) */
-        thead tr {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
-
-        tr {
-            height: 100%;
-            padding: 20px 10px;
-            // border: 1px solid #ccc;
-        }
-
-        td {
-            /* Behave  like a "row" */
-            border: none;
-            // border-bottom: 1px solid #eee;
-            position: relative;
-            padding-left: 50%;
-        }
-
-        td:nth-child(1) {
-            // padding-left: 0;
-        }
-
-        td:before {
-            /* Now like a table header */
-            position: absolute;
-            /* Top/left values mimic padding */
-            top: 6px;
-            left: 6px;
-            width: 45%;
-            padding-right: 10px;
-            white-space: nowrap;
-        }
-
-        /*
-	Label the data
-	*/
-        td:nth-of-type(2):before {
-            content: "First Name";
-        }
-        td:nth-of-type(3):before {
-            content: "Last Name";
-        }
-        td:nth-of-type(4):before {
-            content: "Job Title";
-        }
-        td:nth-of-type(5):before {
-            content: "Favorite Color";
-        }
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
     }
+
+    tr {
+      height: 100%;
+      padding: 20px 10px;
+      // border: 1px solid #ccc;
+    }
+
+    td {
+      border: none;
+      // border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+      margin-bottom: 6px;
+    }
+
+    td:before {
+      /* Now like a table header */
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+    }
+
+    td:nth-of-type(2):before {
+      content: "Darbų kaina, €";
+    }
+    td:nth-of-type(3):before {
+      content: "Kiekis";
+    }
+    td:nth-of-type(4):before {
+      content: "Mato vienetas";
+    }
+    td:nth-of-type(5):before {
+      content: "Suma, €";
+    }
+  }
 }

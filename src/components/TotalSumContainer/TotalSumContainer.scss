@@ -1,37 +1,33 @@
+@import "../../scss/breakpoints";
+
 .total-sum-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    background-color: #428bff;
-    border-radius: 25px;
-    color: #ffffff;
-    font-size: 24px;
-    margin: 0px 20px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #428bff;
+  border-radius: 25px;
+  color: #ffffff;
+  font-size: 24px;
+  margin-bottom: 20px;
 
-    .text {
-        margin-right: 14px;
-        font-size: 18px;
-    }
+  .text {
+    margin-right: 14px;
+    font-size: 18px;
+  }
 
-    .total-value {
-        background: rgba(0, 0, 0, 0.25);
-        border-radius: 0px;
-        border-top-left-radius: 50px;
-        border-bottom-left-radius: 50px;
-        padding: 5px 3px 5px 20px;
-    }
+  .total-value {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 0px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding: 5px 3px 5px 20px;
+  }
 
-    .currency {
-        background: rgba(0, 0, 0, 0.25);
-        border-radius: 0px;
-        border-top-right-radius: 50px;
-        border-bottom-right-radius: 50px;
-        padding: 5px 20px 5px 3px;
-    }
-}
-
-@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
-    .total-sum-container {
-        margin: 0;
-    }
+  .currency {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 0px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    padding: 5px 20px 5px 3px;
+  }
 }
