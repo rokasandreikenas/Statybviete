@@ -4,6 +4,7 @@ import "react-tabs/style/react-tabs.css";
 
 import TabInfo from "../../static/TabInfo";
 import Electricity from "../../static/Electricity";
+import Flooring from "../../static/Flooring";
 import "./EstimateCalculator.scss";
 import EstimateTable from "./EstimateTable/EstimateTable";
 import TotalSumContainer from "../TotalSumContainer";
@@ -15,32 +16,33 @@ const EstimateCalculator = () => {
     luminaireInstallation: 0,
   });
 
-  const handleElectricityQuantityChange = (evt) => {
+  const [flooringQuantity, setFlooringQuantity] = useState({
+    floorLaying: 0,
+    plinthInstallation: 0,
+    thresholdsInstallation: 0,
+  });
+
+  const handleQuantityChange = (quantity, setQuantity, evt) => {
     const value = evt.target.value;
-    setElectricityQuantity({
-      ...electricityQuantity,
+    setQuantity({
+      ...quantity,
       [evt.target.name]: value,
     });
   };
 
-  // const sum = Object.values(electricityQuantity).map((item, index) => {
-  //   return item * Electricity[index].price;
-  // });
-
-  const sum = (quantity, speciality) =>
-    Object.values(quantity).map((item, index) => {
+  const specialityTotalSum = (quantity, speciality) => {
+    const arr = Object.values(quantity).map((item, index) => {
       return item * speciality[index].price;
     });
 
-  const totalSum = (sum) => {
-    return sum.reduce((a, b) => a + b);
+    return arr.reduce((a, b) => a + b, 0);
   };
 
-  const electricitySum = sum(electricityQuantity, Electricity);
+  const electricitySum = specialityTotalSum(electricityQuantity, Electricity);
+  const flooringSum = specialityTotalSum(flooringQuantity, Flooring);
 
-  console.log(electricitySum);
-
-  // const totalSum = sum.reduce((a, b) => a + b);
+  const allSpecialitieSums = [electricitySum, flooringSum];
+  const totalSum = () => allSpecialitieSums.reduce((a, b) => a + b, 0);
 
   return (
     <div className="container">
@@ -59,20 +61,32 @@ const EstimateCalculator = () => {
           <h2>Sienos/Lubos</h2>
         </TabPanel>
         <TabPanel>
-          <h2>Grindys</h2>
+          <EstimateTable
+            list={Flooring}
+            inputs={flooringQuantity}
+            handleChange={(e) =>
+              handleQuantityChange(flooringQuantity, setFlooringQuantity, e)
+            }
+          />
         </TabPanel>
         <TabPanel>
           <EstimateTable
             list={Electricity}
             inputs={electricityQuantity}
-            handleChange={handleElectricityQuantityChange}
+            handleChange={(e) =>
+              handleQuantityChange(
+                electricityQuantity,
+                setElectricityQuantity,
+                e
+              )
+            }
           />
         </TabPanel>
         <TabPanel>
           <h2>Vonia</h2>
         </TabPanel>
       </Tabs>
-      <TotalSumContainer title="Viso" sumValue={totalSum(electricitySum)} />
+      <TotalSumContainer title="Viso" sumValue={totalSum()} />
     </div>
   );
 };

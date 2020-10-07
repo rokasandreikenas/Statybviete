@@ -1,0 +1,23 @@
+@import "../../scss/colors";
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+  -webkit-appearance: none;
+  color: $font-color;
+  border: none;
+  border-bottom: 1px solid $font-color;
+  background: inherit;
+  transition: border 0.3s ease;
+  &::placeholder {
+    color: gray;
+  }
+  &:focus {
+    outline: none;
+    border-color: #428bff;
+  }
+}
