@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
@@ -10,17 +10,26 @@ import EstimateTable from "./EstimateTable/EstimateTable";
 import TotalSumContainer from "../TotalSumContainer";
 
 const EstimateCalculator = () => {
-  const [electricityQuantity, setElectricityQuantity] = useState({
-    newElectricityPointsInstallation: 0,
-    electricalInstallation: 0,
-    luminaireInstallation: 0,
-  });
+  const [electricityQuantity, setElectricityQuantity] = useState({});
+  const [flooringQuantity, setFlooringQuantity] = useState({});
 
-  const [flooringQuantity, setFlooringQuantity] = useState({
-    floorLaying: 0,
-    plinthInstallation: 0,
-    thresholdsInstallation: 0,
-  });
+  useEffect(() => {
+    const electricityObj = createObjectOfInputs(Electricity);
+    const flooringObj = createObjectOfInputs(Flooring);
+
+    setElectricityQuantity(electricityObj);
+    setFlooringQuantity(flooringObj);
+  }, []);
+
+  const createObjectOfInputs = (speciality) => {
+    let objects = {};
+    for (let i = 0; i < speciality.length; i++) {
+      // objects[`${speciality[i].category}${i}`] = 0;
+      objects[speciality[i].title] = 0;
+    }
+
+    return objects;
+  };
 
   const handleQuantityChange = (quantity, setQuantity, evt) => {
     const value = evt.target.value;
