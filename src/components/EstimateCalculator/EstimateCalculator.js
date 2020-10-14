@@ -5,6 +5,8 @@ import "react-tabs/style/react-tabs.css";
 import TabInfo from "../../static/TabInfo";
 import Electricity from "../../static/Electricity";
 import Flooring from "../../static/Flooring";
+import Walls from "../../static/Walls";
+import Bathroom from "../../static/Bathroom";
 import "./EstimateCalculator.scss";
 import EstimateTable from "./EstimateTable/EstimateTable";
 import TotalSumContainer from "../TotalSumContainer";
@@ -12,19 +14,19 @@ import TotalSumContainer from "../TotalSumContainer";
 const EstimateCalculator = () => {
   const [electricityQuantity, setElectricityQuantity] = useState({});
   const [flooringQuantity, setFlooringQuantity] = useState({});
+  const [wallsQuantity, setWallsQuantity] = useState({});
+  const [bathroomQuantity, setBathroomQuantity] = useState({});
 
   useEffect(() => {
-    const electricityObj = createObjectOfInputs(Electricity);
-    const flooringObj = createObjectOfInputs(Flooring);
-
-    setElectricityQuantity(electricityObj);
-    setFlooringQuantity(flooringObj);
+    setElectricityQuantity(createObjectOfInputs(Electricity));
+    setFlooringQuantity(createObjectOfInputs(Flooring));
+    setWallsQuantity(createObjectOfInputs(Walls));
+    setBathroomQuantity(createObjectOfInputs(Bathroom));
   }, []);
 
   const createObjectOfInputs = (speciality) => {
     let objects = {};
     for (let i = 0; i < speciality.length; i++) {
-      // objects[`${speciality[i].category}${i}`] = 0;
       objects[speciality[i].title] = 0;
     }
 
@@ -49,9 +51,20 @@ const EstimateCalculator = () => {
 
   const electricitySum = specialityTotalSum(electricityQuantity, Electricity);
   const flooringSum = specialityTotalSum(flooringQuantity, Flooring);
+  const wallsSum = specialityTotalSum(wallsQuantity, Walls);
+  const bathroomSum = specialityTotalSum(bathroomQuantity, Bathroom);
 
-  const allSpecialitieSums = [electricitySum, flooringSum];
+  const allSpecialitieSums = [
+    electricitySum,
+    flooringSum,
+    wallsSum,
+    bathroomSum,
+  ];
   const totalSum = () => allSpecialitieSums.reduce((a, b) => a + b, 0);
+
+  if (Object.keys(wallsQuantity).length === 0) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="container">
@@ -67,7 +80,13 @@ const EstimateCalculator = () => {
         </TabList>
 
         <TabPanel>
-          <h2>Sienos/Lubos</h2>
+          <EstimateTable
+            list={Walls}
+            inputs={wallsQuantity}
+            handleChange={(e) =>
+              handleQuantityChange(wallsQuantity, setWallsQuantity, e)
+            }
+          />
         </TabPanel>
         <TabPanel>
           <EstimateTable
@@ -92,7 +111,13 @@ const EstimateCalculator = () => {
           />
         </TabPanel>
         <TabPanel>
-          <h2>Vonia</h2>
+          <EstimateTable
+            list={Bathroom}
+            inputs={bathroomQuantity}
+            handleChange={(e) =>
+              handleQuantityChange(bathroomQuantity, setBathroomQuantity, e)
+            }
+          />
         </TabPanel>
       </Tabs>
       <TotalSumContainer title="Viso" sumValue={totalSum()} />
