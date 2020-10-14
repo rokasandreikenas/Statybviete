@@ -1,5 +1,29 @@
 @import "./../../scss/breakpoints";
 
+.button-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+
+  .export-button{
+    margin-top: 10px;
+    margin-right: 20px;
+    display: flex;
+    align-items: flex-end; 
+
+   
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+ 
+  
+}
+
 .react-tabs__tab-list {
   margin: 20px 0px;
   padding: 6px;

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
+import "react-tabs/style/react-tabs.css";
+import pdfFile from "../../assets/pdf-file.svg";
 import TabInfo from "../../static/TabInfo";
 import Electricity from "../../static/Electricity";
 import Flooring from "../../static/Flooring";
@@ -11,6 +13,7 @@ import Tiles from "../../static/Tiles";
 import "./EstimateCalculator.scss";
 import EstimateTable from "./EstimateTable/EstimateTable";
 import TotalSumContainer from "../TotalSumContainer";
+import PDFfile from "../PDFfile/PDFfile";
 
 const EstimateCalculator = () => {
   const [electricityQuantity, setElectricityQuantity] = useState({});
@@ -93,14 +96,37 @@ const EstimateCalculator = () => {
     bathroomSum,
     tilesSum,
   ];
+
+  console.log(allSpecialitieSums);
   const totalSum = () => allSpecialitieSums.reduce((a, b) => a + b, 0);
 
   if (Object.keys(wallsQuantity).length === 0) {
-    return <div>Loading...</div>;
+    return <div>...</div>;
   }
 
   return (
     <div className="container">
+      <div className="button-container">
+        <div className="export-button">
+          <PDFDownloadLink
+            document={
+              <PDFfile
+                allSpecialitieSums={allSpecialitieSums}
+                totalSum={totalSum()}
+              />
+            }
+            fileName="somename.pdf"
+          >
+            {({ blob, url, loading, error }) =>
+              loading ? (
+                "Loading document..."
+              ) : (
+                <img src={pdfFile} alt="pdf-file" />
+              )
+            }
+          </PDFDownloadLink>
+        </div>
+      </div>
       <Tabs>
         <TabList>
           {TabInfo.map((tab, index) => (
