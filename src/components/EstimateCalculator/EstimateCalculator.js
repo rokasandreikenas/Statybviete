@@ -7,6 +7,7 @@ import Electricity from "../../static/Electricity";
 import Flooring from "../../static/Flooring";
 import Walls from "../../static/Walls";
 import Bathroom from "../../static/Bathroom";
+import Tiles from "../../static/Tiles";
 import "./EstimateCalculator.scss";
 import EstimateTable from "./EstimateTable/EstimateTable";
 import TotalSumContainer from "../TotalSumContainer";
@@ -16,13 +17,43 @@ const EstimateCalculator = () => {
   const [flooringQuantity, setFlooringQuantity] = useState({});
   const [wallsQuantity, setWallsQuantity] = useState({});
   const [bathroomQuantity, setBathroomQuantity] = useState({});
+  const [tilesQuantity, setTilesQuantity] = useState({});
 
   useEffect(() => {
     setElectricityQuantity(createObjectOfInputs(Electricity));
     setFlooringQuantity(createObjectOfInputs(Flooring));
     setWallsQuantity(createObjectOfInputs(Walls));
     setBathroomQuantity(createObjectOfInputs(Bathroom));
+    setTilesQuantity(createObjectOfInputs(Tiles));
   }, []);
+
+  const tabPanel = [
+    {
+      list: Walls,
+      inputs: wallsQuantity,
+      inputHandler: setWallsQuantity,
+    },
+    {
+      list: Flooring,
+      inputs: flooringQuantity,
+      inputHandler: setFlooringQuantity,
+    },
+    {
+      list: Electricity,
+      inputs: electricityQuantity,
+      inputHandler: setElectricityQuantity,
+    },
+    {
+      list: Bathroom,
+      inputs: bathroomQuantity,
+      inputHandler: setBathroomQuantity,
+    },
+    {
+      list: Tiles,
+      inputs: tilesQuantity,
+      inputHandler: setTilesQuantity,
+    },
+  ];
 
   const createObjectOfInputs = (speciality) => {
     let objects = {};
@@ -53,12 +84,14 @@ const EstimateCalculator = () => {
   const flooringSum = specialityTotalSum(flooringQuantity, Flooring);
   const wallsSum = specialityTotalSum(wallsQuantity, Walls);
   const bathroomSum = specialityTotalSum(bathroomQuantity, Bathroom);
+  const tilesSum = specialityTotalSum(tilesQuantity, Tiles);
 
   const allSpecialitieSums = [
     electricitySum,
     flooringSum,
     wallsSum,
     bathroomSum,
+    tilesSum,
   ];
   const totalSum = () => allSpecialitieSums.reduce((a, b) => a + b, 0);
 
@@ -70,55 +103,27 @@ const EstimateCalculator = () => {
     <div className="container">
       <Tabs>
         <TabList>
-          {TabInfo &&
-            TabInfo.map((tab, index) => (
-              <Tab key={index}>
-                <img src={tab.image} alt={tab.imageInfo} />
-                {tab.name}
-              </Tab>
-            ))}
+          {TabInfo.map((tab, index) => (
+            <Tab key={index}>
+              <img src={tab.image} alt={tab.imageInfo} />
+              {tab.name}
+            </Tab>
+          ))}
         </TabList>
 
-        <TabPanel>
-          <EstimateTable
-            list={Walls}
-            inputs={wallsQuantity}
-            handleChange={(e) =>
-              handleQuantityChange(wallsQuantity, setWallsQuantity, e)
-            }
-          />
-        </TabPanel>
-        <TabPanel>
-          <EstimateTable
-            list={Flooring}
-            inputs={flooringQuantity}
-            handleChange={(e) =>
-              handleQuantityChange(flooringQuantity, setFlooringQuantity, e)
-            }
-          />
-        </TabPanel>
-        <TabPanel>
-          <EstimateTable
-            list={Electricity}
-            inputs={electricityQuantity}
-            handleChange={(e) =>
-              handleQuantityChange(
-                electricityQuantity,
-                setElectricityQuantity,
-                e
-              )
-            }
-          />
-        </TabPanel>
-        <TabPanel>
-          <EstimateTable
-            list={Bathroom}
-            inputs={bathroomQuantity}
-            handleChange={(e) =>
-              handleQuantityChange(bathroomQuantity, setBathroomQuantity, e)
-            }
-          />
-        </TabPanel>
+        {tabPanel.map((tab, index) => {
+          return (
+            <TabPanel key={index}>
+              <EstimateTable
+                list={tab.list}
+                inputs={tab.inputs}
+                handleChange={(e) =>
+                  handleQuantityChange(tab.inputs, tab.inputHandler, e)
+                }
+              />
+            </TabPanel>
+          );
+        })}
       </Tabs>
       <TotalSumContainer title="Viso" sumValue={totalSum()} />
     </div>

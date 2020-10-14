@@ -44,8 +44,8 @@
   }
 }
 
-@include mobile {
+@include mobile-tablet {
   .react-tabs__tab {
-    padding: 8px 18px;
+    padding: 8px 16px;
   }
 }
