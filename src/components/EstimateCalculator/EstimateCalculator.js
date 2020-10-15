@@ -89,16 +89,17 @@ const EstimateCalculator = () => {
   const bathroomSum = specialityTotalSum(bathroomQuantity, Bathroom);
   const tilesSum = specialityTotalSum(tilesQuantity, Tiles);
 
-  const allSpecialitieSums = [
-    electricitySum,
-    flooringSum,
-    wallsSum,
-    bathroomSum,
-    tilesSum,
-  ];
+  const allSpecialitiesSums = {
+    electricitySum: electricitySum,
+    flooringSum: flooringSum,
+    wallsSum: wallsSum,
+    bathroomSum: bathroomSum,
+    tilesSum: tilesSum,
+  };
 
-  console.log(allSpecialitieSums);
-  const totalSum = () => allSpecialitieSums.reduce((a, b) => a + b, 0);
+  const allSpecialitiesSumsArr = Object.values(allSpecialitiesSums);
+
+  const totalSum = () => allSpecialitiesSumsArr.reduce((a, b) => a + b, 0);
 
   if (Object.keys(wallsQuantity).length === 0) {
     return <div>...</div>;
@@ -111,11 +112,12 @@ const EstimateCalculator = () => {
           <PDFDownloadLink
             document={
               <PDFfile
-                allSpecialitieSums={allSpecialitieSums}
+                allSpecialitiesSums={allSpecialitiesSums}
                 totalSum={totalSum()}
+                workInfo={tabPanel}
               />
             }
-            fileName="somename.pdf"
+            fileName="samata.pdf"
           >
             {({ blob, url, loading, error }) =>
               loading ? (
