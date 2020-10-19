@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
 import "react-tabs/style/react-tabs.css";
-import pdfFile from "../../assets/pdf-file.svg";
+import pdfFile from "../../assets/icons/pdf-file.svg";
 import TabInfo from "../../static/TabInfo";
 import Electricity from "../../static/Electricity";
 import Flooring from "../../static/Flooring";
@@ -61,7 +61,7 @@ const EstimateCalculator = () => {
   const createObjectOfInputs = (speciality) => {
     let objects = {};
     for (let i = 0; i < speciality.length; i++) {
-      objects[speciality[i].title] = 0;
+      objects[speciality[i].title] = "";
     }
 
     return objects;
@@ -119,13 +119,13 @@ const EstimateCalculator = () => {
             }
             fileName="samata.pdf"
           >
-            {({ blob, url, loading, error }) =>
-              loading ? (
-                "Loading document..."
-              ) : (
-                <img src={pdfFile} alt="pdf-file" />
-              )
-            }
+            {({ blob, url, loading, error }) => (
+              <img
+                src={pdfFile}
+                alt="pdf-file"
+                className={loading ? "loading-pdf" : ""}
+              />
+            )}
           </PDFDownloadLink>
         </div>
       </div>

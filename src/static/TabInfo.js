@@ -1,8 +1,8 @@
-import PaintRoller from "../assets/paint-roller.svg";
-import Parquet from "../assets/parquet.svg";
-import LightBulb from "../assets/light-bulb.svg";
-import BathTub from "../assets/bathtub.svg";
-import Tiles from "../assets/tiles.svg";
+import PaintRoller from "../assets/icons/paint-roller.svg";
+import Parquet from "../assets/icons/parquet.svg";
+import LightBulb from "../assets/icons/light-bulb.svg";
+import BathTub from "../assets/icons/bathtub.svg";
+import Tiles from "../assets/icons/tiles.svg";
 
 const TabInfo = [
   {
