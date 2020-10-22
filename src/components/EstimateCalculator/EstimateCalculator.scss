@@ -1,27 +1,14 @@
 @import "./../../scss/breakpoints";
 @import "./../../scss/colors";
 
-.estimate-info {
+.property-info {
   color: $font-color;
-  display: flex;
-  flex-direction: column;
 
-  .input-group {
+  .description,
+  .work-prices {
+    width: 50%;
     display: flex;
-    width: 300px;
-    padding-bottom: 12px;
-    font-size: 18px;
-    label {
-      width: 60%;
-    }
-    input {
-      width: 30%;
-      padding: 0;
-    }
-    span {
-      margin-left: 5px;
-      width: 10%;
-    }
+    flex-direction: column;
   }
 }
 

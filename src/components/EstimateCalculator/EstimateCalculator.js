@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+// import { PDFDownloadLink } from "@react-pdf/renderer";
 
 import "react-tabs/style/react-tabs.css";
-import Input from "../Input";
-// import pdfFile from "../../assets/icons/pdf-file.svg";
-import file from "../../assets/icons/file.svg";
-import gear from "../../assets/icons/settings.svg";
+// import file from "../../assets/icons/file.svg";
+// import gear from "../../assets/icons/settings.svg";
 import TabInfo from "../../static/TabInfo";
 import Electricity from "../../static/Electricity";
 import Flooring from "../../static/Flooring";
@@ -16,13 +14,18 @@ import Tiles from "../../static/Tiles";
 import "./EstimateCalculator.scss";
 import EstimateTable from "./EstimateTable/EstimateTable";
 import TotalSumContainer from "../TotalSumContainer";
-import PDFfile from "../PDFfile/PDFfile";
-import Button from "../Button";
+// import PDFfile from "../PDFfile/PDFfile";
+// import Button from "../Button";
+import InputGroup from "../InputGroup";
+import ExportButton from "../PDFfile/ExportButton/ExportButton";
+import PriceTable from "../PriceTable/PriceTable";
 
 const EstimateCalculator = () => {
-  const [roomsNumber, setRoomsNumber] = useState("");
-  const [roomsArea, setRoomsArea] = useState("");
-  const [bathroomArea, setBathroomArea] = useState("");
+  const [propertyDescription, setPropertyDescription] = useState({
+    roomsNumber: "",
+    roomsArea: "",
+    bathroomArea: "",
+  });
   const [electricityQuantity, setElectricityQuantity] = useState({});
   const [flooringQuantity, setFlooringQuantity] = useState({});
   const [wallsQuantity, setWallsQuantity] = useState({});
@@ -66,6 +69,26 @@ const EstimateCalculator = () => {
     },
   ];
 
+  const propertyInfo = [
+    {
+      label: "Kambarių skaičius:",
+      value: propertyDescription.roomsNumber,
+      name: "roomsNumber",
+    },
+    {
+      label: "Kambarių plotas:",
+      value: propertyDescription.roomsArea,
+      name: "roomsArea",
+      symbol: "m²",
+    },
+    {
+      label: "WC ir vonios plotas:",
+      value: propertyDescription.bathroomArea,
+      name: "bathroomArea",
+      symbol: "m²",
+    },
+  ];
+
   const createObjectOfInputs = (speciality) => {
     let objects = {};
     for (let i = 0; i < speciality.length; i++) {
@@ -75,10 +98,10 @@ const EstimateCalculator = () => {
     return objects;
   };
 
-  const handleQuantityChange = (quantity, setQuantity, evt) => {
+  const handleInputChange = (state, setState, evt) => {
     const value = evt.target.value;
-    setQuantity({
-      ...quantity,
+    setState({
+      ...state,
       [evt.target.name]: value,
     });
   };
@@ -116,62 +139,38 @@ const EstimateCalculator = () => {
   return (
     <div className="container">
       <div className="button-container">
-        <div className="export-button">
-          {documentGenerated ? (
-            <PDFDownloadLink
-              document={
-                <PDFfile
-                  allSpecialitiesSums={allSpecialitiesSums}
-                  totalSum={totalSum()}
-                  workInfo={tabPanel}
-                />
-              }
-              fileName="samata.pdf"
-            >
-              {({ blob, url, loading, error }) => (
-                <Button className={loading ? "button loading" : "button"}>
-                  <img src={file} alt={file} />
-                  <span>Download PDF</span>
-                </Button>
-              )}
-            </PDFDownloadLink>
-          ) : (
-            <Button onClick={() => setDocumentGenerated(true)}>
-              <img src={gear} alt={gear} />
-              <span>Generate PDF</span>
-            </Button>
-          )}
-        </div>
+        <ExportButton
+          documentGenerated={documentGenerated}
+          setDocumentGenerated={setDocumentGenerated}
+          allSpecialitiesSums={allSpecialitiesSums}
+          totalSum={totalSum()}
+          tabPanel={tabPanel}
+        />
       </div>
-      <div className="estimate-info">
-        <div className="input-group">
-          <label>Kambarių skaičius:</label>
-          <Input
-            type="number"
-            value={roomsNumber}
-            onChange={(e) => setRoomsNumber(e.target.value)}
-            name="roomsNumber"
-          />
+      <div className="property-info">
+        <div className="description">
+          {propertyInfo.map((input, index) => {
+            return (
+              <InputGroup
+                key={index}
+                label={input.label}
+                type="number"
+                value={input.value}
+                onChange={(e) =>
+                  handleInputChange(
+                    propertyDescription,
+                    setPropertyDescription,
+                    e
+                  )
+                }
+                name={input.name}
+                symbol={input.symbol}
+              />
+            );
+          })}
         </div>
-        <div className="input-group">
-          <label>Kambarių plotas:</label>
-          <Input
-            type="number"
-            value={roomsArea}
-            onChange={(e) => setRoomsArea(e.target.value)}
-            name="roomsArea"
-          />
-          <span>m²</span>
-        </div>
-        <div className="input-group">
-          <label>WC ir vonios plotas:</label>
-          <Input
-            type="number"
-            value={bathroomArea}
-            onChange={(e) => setBathroomArea(e.target.value)}
-            name="bathroomArea"
-          />
-          <span>m²</span>
+        <div className="work-prices">
+          <PriceTable />
         </div>
       </div>
 
@@ -192,7 +191,7 @@ const EstimateCalculator = () => {
                 list={tab.list}
                 inputs={tab.inputs}
                 handleChange={(e) =>
-                  handleQuantityChange(tab.inputs, tab.inputHandler, e)
+                  handleInputChange(tab.inputs, tab.inputHandler, e)
                 }
               />
             </TabPanel>
