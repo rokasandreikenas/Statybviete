@@ -3,7 +3,10 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
 import "react-tabs/style/react-tabs.css";
-import pdfFile from "../../assets/icons/pdf-file.svg";
+import Input from "../Input";
+// import pdfFile from "../../assets/icons/pdf-file.svg";
+import file from "../../assets/icons/file.svg";
+import gear from "../../assets/icons/settings.svg";
 import TabInfo from "../../static/TabInfo";
 import Electricity from "../../static/Electricity";
 import Flooring from "../../static/Flooring";
@@ -14,13 +17,18 @@ import "./EstimateCalculator.scss";
 import EstimateTable from "./EstimateTable/EstimateTable";
 import TotalSumContainer from "../TotalSumContainer";
 import PDFfile from "../PDFfile/PDFfile";
+import Button from "../Button";
 
 const EstimateCalculator = () => {
+  const [roomsNumber, setRoomsNumber] = useState("");
+  const [roomsArea, setRoomsArea] = useState("");
+  const [bathroomArea, setBathroomArea] = useState("");
   const [electricityQuantity, setElectricityQuantity] = useState({});
   const [flooringQuantity, setFlooringQuantity] = useState({});
   const [wallsQuantity, setWallsQuantity] = useState({});
   const [bathroomQuantity, setBathroomQuantity] = useState({});
   const [tilesQuantity, setTilesQuantity] = useState({});
+  const [documentGenerated, setDocumentGenerated] = useState(false);
 
   useEffect(() => {
     setElectricityQuantity(createObjectOfInputs(Electricity));
@@ -109,26 +117,64 @@ const EstimateCalculator = () => {
     <div className="container">
       <div className="button-container">
         <div className="export-button">
-          <PDFDownloadLink
-            document={
-              <PDFfile
-                allSpecialitiesSums={allSpecialitiesSums}
-                totalSum={totalSum()}
-                workInfo={tabPanel}
-              />
-            }
-            fileName="samata.pdf"
-          >
-            {({ blob, url, loading, error }) => (
-              <img
-                src={pdfFile}
-                alt="pdf-file"
-                className={loading ? "loading-pdf" : ""}
-              />
-            )}
-          </PDFDownloadLink>
+          {documentGenerated ? (
+            <PDFDownloadLink
+              document={
+                <PDFfile
+                  allSpecialitiesSums={allSpecialitiesSums}
+                  totalSum={totalSum()}
+                  workInfo={tabPanel}
+                />
+              }
+              fileName="samata.pdf"
+            >
+              {({ blob, url, loading, error }) => (
+                <Button className={loading ? "button loading" : "button"}>
+                  <img src={file} alt={file} />
+                  <span>Download PDF</span>
+                </Button>
+              )}
+            </PDFDownloadLink>
+          ) : (
+            <Button onClick={() => setDocumentGenerated(true)}>
+              <img src={gear} alt={gear} />
+              <span>Generate PDF</span>
+            </Button>
+          )}
         </div>
       </div>
+      <div className="estimate-info">
+        <div className="input-group">
+          <label>Kambarių skaičius:</label>
+          <Input
+            type="number"
+            value={roomsNumber}
+            onChange={(e) => setRoomsNumber(e.target.value)}
+            name="roomsNumber"
+          />
+        </div>
+        <div className="input-group">
+          <label>Kambarių plotas:</label>
+          <Input
+            type="number"
+            value={roomsArea}
+            onChange={(e) => setRoomsArea(e.target.value)}
+            name="roomsArea"
+          />
+          <span>m²</span>
+        </div>
+        <div className="input-group">
+          <label>WC ir vonios plotas:</label>
+          <Input
+            type="number"
+            value={bathroomArea}
+            onChange={(e) => setBathroomArea(e.target.value)}
+            name="bathroomArea"
+          />
+          <span>m²</span>
+        </div>
+      </div>
+
       <Tabs>
         <TabList>
           {TabInfo.map((tab, index) => (
