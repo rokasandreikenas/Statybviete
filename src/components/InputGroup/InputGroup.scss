@@ -2,7 +2,6 @@
   display: flex;
   width: 300px;
   padding-bottom: 12px;
-  font-size: 18px;
   label {
     width: 60%;
   }
@@ -13,5 +12,6 @@
   span {
     margin-left: 5px;
     width: 10%;
+    cursor: default;
   }
 }

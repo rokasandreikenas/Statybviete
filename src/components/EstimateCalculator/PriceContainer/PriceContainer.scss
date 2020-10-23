@@ -1,0 +1,39 @@
+.price-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  //   -webkit-box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
+  //   -moz-box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
+  //   box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 25px;
+  margin-bottom: 20px;
+
+  .prices {
+    background: #ececec;
+    padding: 15px 30px 5px 30px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .input-group .input {
+    cursor: default;
+  }
+}
+
+.total-sum {
+  background: #428bff;
+  padding: 15px 30px 5px 30px;
+  color: #ffffff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  .input {
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+
+    &:focus {
+      outline: none;
+      border-color: #000000;
+    }
+  }
+}

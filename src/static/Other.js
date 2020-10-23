@@ -1,6 +1,6 @@
 const Other = [
   {
-    title: "Griovimo, demontavimo darbai",
+    title: "Griovimas, demontavimas",
     price: 7,
     unit: "m²",
     category: "other",
@@ -19,7 +19,7 @@ const Other = [
   },
   {
     title: "Buto sutvarkymas",
-    price: 50,
+    price: 2,
     unit: "m²",
     category: "other",
   },

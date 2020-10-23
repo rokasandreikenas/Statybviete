@@ -3,35 +3,22 @@
 .property-info {
   color: $font-color;
 
+  display: flex;
+
   .description,
   .work-prices {
     width: 50%;
     display: flex;
     flex-direction: column;
+    font-size: 18px;
+  }
+
+  .work-prices {
+    align-items: center;
   }
 }
-
 .button-container {
   display: flex;
   justify-content: flex-end;
   padding-bottom: 20px;
-
-  .export-button {
-    margin-top: 10px;
-    margin-right: 20px;
-
-    img {
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
-    }
-    a {
-      text-decoration: none;
-    }
-
-    .loading {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  }
 }

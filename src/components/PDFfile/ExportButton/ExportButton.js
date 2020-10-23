@@ -29,14 +29,14 @@ const ExportButton = ({
           {({ blob, url, loading, error }) => (
             <Button className={loading ? "button loading" : "button"}>
               <img src={file} alt={file} />
-              <span>Download PDF</span>
+              <span>Atsisiųsti PDF</span>
             </Button>
           )}
         </PDFDownloadLink>
       ) : (
         <Button onClick={() => setDocumentGenerated(true)}>
           <img src={gear} alt={gear} />
-          <span>Generate PDF</span>
+          <span>Generuoti PDF</span>
         </Button>
       )}
     </div>

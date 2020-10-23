@@ -103,7 +103,7 @@ const PDFfile = ({ allSpecialitiesSums, totalSum, workInfo }) => {
     <Document>
       <Page size="A4" style={styles.page}>
         <View>
-          <Text style={styles.heading}>Darbų samata</Text>
+          <Text style={styles.heading}>Darbų sąmata</Text>
         </View>
         <View style={styles.summaryContainer}>
           <View style={styles.summary}>

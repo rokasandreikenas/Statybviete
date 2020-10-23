@@ -11,7 +11,7 @@ import "./EstimateCalculator.scss";
 import TotalSumContainer from "../TotalSumContainer";
 
 import ExportButton from "../PDFfile/ExportButton/ExportButton";
-import PriceTable from "../PriceTable/PriceTable";
+import PriceContainer from "./PriceContainer";
 import PropertyInfo from "./PropertyInfo/PropertyInfo";
 import EstimateSpreadsheet from "./EstimateSpreadsheet/EstimateSpreadsheet";
 
@@ -124,18 +124,38 @@ const EstimateCalculator = () => {
   const tilesSum = specialityTotalSum(tiles, Tiles);
   const othersSum = specialityTotalSum(other, Other);
 
-  const allSpecialitiesSums = {
-    electricitySum: electricitySum,
-    flooringSum: flooringSum,
-    wallsSum: wallsSum,
-    bathroomSum: bathroomSum,
-    tilesSum: tilesSum,
-    othersSum: othersSum,
+  // const allSpecialitiesSums = {
+  //   electricitySum: electricitySum,
+  //   flooringSum: flooringSum,
+  //   wallsSum: wallsSum,
+  //   bathroomSum: bathroomSum,
+  //   tilesSum: tilesSum,
+  //   othersSum: othersSum,
+  // };
+
+  const allSpecialitiesSums = [
+    { name: "Elektros darbai", value: electricitySum },
+    { name: "Santechnikos darbai", value: bathroomSum },
+    { name: "Sienų/lubų darbai", value: wallsSum },
+    { name: "Grindų klojimo darbai", value: flooringSum },
+    { name: "Plytelių klojimo darbai", value: tilesSum },
+    { name: "Kiti darbai", value: othersSum },
+  ];
+
+  // ["Elektros darbai"]: electricitySum,
+  // ["Santechnikos darbai"]: bathroomSum,
+  // ["Sienų/lubų darbai"]: wallsSum,
+  // ["Grindų klojimo darbai"]: flooringSum,
+  // ["Plytelių klojimo darbai"]: tilesSum,
+  // ["Kiti darbai"]: othersSum,
+
+  const totalSum = () => {
+    const arr = allSpecialitiesSums.map((item) => {
+      return item.value;
+    });
+
+    return arr.reduce((a, b) => a + b, 0);
   };
-
-  const allSpecialitiesSumsArr = Object.values(allSpecialitiesSums);
-
-  const totalSum = () => allSpecialitiesSumsArr.reduce((a, b) => a + b, 0);
 
   if (Object.keys(walls).length === 0) {
     return <div>...</div>;
@@ -162,7 +182,7 @@ const EstimateCalculator = () => {
           />
         </div>
         <div className="work-prices">
-          <PriceTable />
+          <PriceContainer allSpecialitiesSums={allSpecialitiesSums} />
         </div>
       </div>
       <EstimateSpreadsheet
@@ -170,7 +190,7 @@ const EstimateCalculator = () => {
         tabPanel={tabPanel}
         handleInputChange={handleInputChange}
       />
-      <TotalSumContainer title="Viso" sumValue={totalSum()} />
+      {/* <TotalSumContainer title="Viso" sumValue={totalSum()} /> */}
     </div>
   );
 };

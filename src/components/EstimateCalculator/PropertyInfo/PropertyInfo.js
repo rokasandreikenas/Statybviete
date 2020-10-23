@@ -1,6 +1,5 @@
 import React from "react";
 import InputGroup from "../../InputGroup";
-
 const PropertyInfo = ({
   propertyInfo,
   handleInputChange,
