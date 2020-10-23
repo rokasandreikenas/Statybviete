@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-// import { PDFDownloadLink } from "@react-pdf/renderer";
 
-import "react-tabs/style/react-tabs.css";
-// import file from "../../assets/icons/file.svg";
-// import gear from "../../assets/icons/settings.svg";
 import TabInfo from "../../static/TabInfo";
 import Electricity from "../../static/Electricity";
 import Flooring from "../../static/Flooring";
 import Walls from "../../static/Walls";
 import Bathroom from "../../static/Bathroom";
 import Tiles from "../../static/Tiles";
+import Other from "../../static/Other";
 import "./EstimateCalculator.scss";
-import EstimateTable from "./EstimateTable/EstimateTable";
 import TotalSumContainer from "../TotalSumContainer";
-// import PDFfile from "../PDFfile/PDFfile";
-// import Button from "../Button";
-import InputGroup from "../InputGroup";
+
 import ExportButton from "../PDFfile/ExportButton/ExportButton";
 import PriceTable from "../PriceTable/PriceTable";
+import PropertyInfo from "./PropertyInfo/PropertyInfo";
+import EstimateSpreadsheet from "./EstimateSpreadsheet/EstimateSpreadsheet";
 
 const EstimateCalculator = () => {
   const [propertyDescription, setPropertyDescription] = useState({
@@ -26,46 +21,54 @@ const EstimateCalculator = () => {
     roomsArea: "",
     bathroomArea: "",
   });
-  const [electricityQuantity, setElectricityQuantity] = useState({});
-  const [flooringQuantity, setFlooringQuantity] = useState({});
-  const [wallsQuantity, setWallsQuantity] = useState({});
-  const [bathroomQuantity, setBathroomQuantity] = useState({});
-  const [tilesQuantity, setTilesQuantity] = useState({});
+  const [electricity, setElectricity] = useState({});
+  const [flooring, setFlooring] = useState({});
+  const [walls, setWalls] = useState({});
+  const [bathroom, setBathroom] = useState({});
+  const [tiles, setTiles] = useState({});
+  const [other, setOther] = useState({});
+
   const [documentGenerated, setDocumentGenerated] = useState(false);
 
   useEffect(() => {
-    setElectricityQuantity(createObjectOfInputs(Electricity));
-    setFlooringQuantity(createObjectOfInputs(Flooring));
-    setWallsQuantity(createObjectOfInputs(Walls));
-    setBathroomQuantity(createObjectOfInputs(Bathroom));
-    setTilesQuantity(createObjectOfInputs(Tiles));
+    setElectricity(createObjectOfInputs(Electricity));
+    setFlooring(createObjectOfInputs(Flooring));
+    setWalls(createObjectOfInputs(Walls));
+    setBathroom(createObjectOfInputs(Bathroom));
+    setTiles(createObjectOfInputs(Tiles));
+    setOther(createObjectOfInputs(Other));
   }, []);
 
   const tabPanel = [
     {
-      list: Walls,
-      inputs: wallsQuantity,
-      inputHandler: setWallsQuantity,
-    },
-    {
-      list: Flooring,
-      inputs: flooringQuantity,
-      inputHandler: setFlooringQuantity,
-    },
-    {
       list: Electricity,
-      inputs: electricityQuantity,
-      inputHandler: setElectricityQuantity,
+      inputs: electricity,
+      inputHandler: setElectricity,
     },
     {
       list: Bathroom,
-      inputs: bathroomQuantity,
-      inputHandler: setBathroomQuantity,
+      inputs: bathroom,
+      inputHandler: setBathroom,
+    },
+    {
+      list: Walls,
+      inputs: walls,
+      inputHandler: setWalls,
+    },
+    {
+      list: Flooring,
+      inputs: flooring,
+      inputHandler: setFlooring,
     },
     {
       list: Tiles,
-      inputs: tilesQuantity,
-      inputHandler: setTilesQuantity,
+      inputs: tiles,
+      inputHandler: setTiles,
+    },
+    {
+      list: Other,
+      inputs: other,
+      inputHandler: setOther,
     },
   ];
 
@@ -106,19 +109,20 @@ const EstimateCalculator = () => {
     });
   };
 
-  const specialityTotalSum = (quantity, speciality) => {
-    const arr = Object.values(quantity).map((item, index) => {
+  const specialityTotalSum = (jobs, speciality) => {
+    const arr = Object.values(jobs).map((item, index) => {
       return item * speciality[index].price;
     });
 
     return arr.reduce((a, b) => a + b, 0);
   };
 
-  const electricitySum = specialityTotalSum(electricityQuantity, Electricity);
-  const flooringSum = specialityTotalSum(flooringQuantity, Flooring);
-  const wallsSum = specialityTotalSum(wallsQuantity, Walls);
-  const bathroomSum = specialityTotalSum(bathroomQuantity, Bathroom);
-  const tilesSum = specialityTotalSum(tilesQuantity, Tiles);
+  const electricitySum = specialityTotalSum(electricity, Electricity);
+  const flooringSum = specialityTotalSum(flooring, Flooring);
+  const wallsSum = specialityTotalSum(walls, Walls);
+  const bathroomSum = specialityTotalSum(bathroom, Bathroom);
+  const tilesSum = specialityTotalSum(tiles, Tiles);
+  const othersSum = specialityTotalSum(other, Other);
 
   const allSpecialitiesSums = {
     electricitySum: electricitySum,
@@ -126,13 +130,14 @@ const EstimateCalculator = () => {
     wallsSum: wallsSum,
     bathroomSum: bathroomSum,
     tilesSum: tilesSum,
+    othersSum: othersSum,
   };
 
   const allSpecialitiesSumsArr = Object.values(allSpecialitiesSums);
 
   const totalSum = () => allSpecialitiesSumsArr.reduce((a, b) => a + b, 0);
 
-  if (Object.keys(wallsQuantity).length === 0) {
+  if (Object.keys(walls).length === 0) {
     return <div>...</div>;
   }
 
@@ -149,55 +154,22 @@ const EstimateCalculator = () => {
       </div>
       <div className="property-info">
         <div className="description">
-          {propertyInfo.map((input, index) => {
-            return (
-              <InputGroup
-                key={index}
-                label={input.label}
-                type="number"
-                value={input.value}
-                onChange={(e) =>
-                  handleInputChange(
-                    propertyDescription,
-                    setPropertyDescription,
-                    e
-                  )
-                }
-                name={input.name}
-                symbol={input.symbol}
-              />
-            );
-          })}
+          <PropertyInfo
+            propertyInfo={propertyInfo}
+            handleInputChange={handleInputChange}
+            propertyDescription={propertyDescription}
+            setPropertyDescription={setPropertyDescription}
+          />
         </div>
         <div className="work-prices">
           <PriceTable />
         </div>
       </div>
-
-      <Tabs>
-        <TabList>
-          {TabInfo.map((tab, index) => (
-            <Tab key={index}>
-              <img src={tab.image} alt={tab.imageInfo} />
-              {tab.name}
-            </Tab>
-          ))}
-        </TabList>
-
-        {tabPanel.map((tab, index) => {
-          return (
-            <TabPanel key={index}>
-              <EstimateTable
-                list={tab.list}
-                inputs={tab.inputs}
-                handleChange={(e) =>
-                  handleInputChange(tab.inputs, tab.inputHandler, e)
-                }
-              />
-            </TabPanel>
-          );
-        })}
-      </Tabs>
+      <EstimateSpreadsheet
+        tabInfo={TabInfo}
+        tabPanel={tabPanel}
+        handleInputChange={handleInputChange}
+      />
       <TotalSumContainer title="Viso" sumValue={totalSum()} />
     </div>
   );
