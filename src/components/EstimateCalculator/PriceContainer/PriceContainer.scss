@@ -3,17 +3,16 @@
   flex-direction: column;
   align-items: center;
   font-size: 16px;
-  //   -webkit-box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
-  //   -moz-box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
-  //   box-shadow: 0 25px 40px rgba(0, 0, 0, 0.15);
-  border-radius: 25px;
-  margin-bottom: 20px;
+  border-radius: 5px;
+  margin-bottom: 30px;
 
   .prices {
     background: #ececec;
+    border: 1px solid #428bff;
     padding: 15px 30px 5px 30px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    width: 450px;
   }
 
   .input-group .input {
@@ -27,6 +26,9 @@
   color: #ffffff;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  border: 1px solid #428bff;
+  width: 450px;
+
   .input {
     color: #ffffff;
     border-bottom: 1px solid #ffffff;

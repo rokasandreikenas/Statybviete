@@ -8,8 +8,6 @@ import Bathroom from "../../static/Bathroom";
 import Tiles from "../../static/Tiles";
 import Other from "../../static/Other";
 import "./EstimateCalculator.scss";
-import TotalSumContainer from "../TotalSumContainer";
-
 import ExportButton from "../PDFfile/ExportButton/ExportButton";
 import PriceContainer from "./PriceContainer";
 import PropertyInfo from "./PropertyInfo/PropertyInfo";
@@ -17,6 +15,7 @@ import EstimateSpreadsheet from "./EstimateSpreadsheet/EstimateSpreadsheet";
 
 const EstimateCalculator = () => {
   const [propertyDescription, setPropertyDescription] = useState({
+    apartamentName: "",
     roomsNumber: "",
     roomsArea: "",
     bathroomArea: "",
@@ -74,21 +73,30 @@ const EstimateCalculator = () => {
 
   const propertyInfo = [
     {
+      label: "Objekto pavadinimas:",
+      value: propertyDescription.apartamentName,
+      name: "apartamentName",
+      type: "text",
+    },
+    {
       label: "Kambarių skaičius:",
       value: propertyDescription.roomsNumber,
       name: "roomsNumber",
+      type: "number",
     },
     {
       label: "Kambarių plotas:",
       value: propertyDescription.roomsArea,
       name: "roomsArea",
       symbol: "m²",
+      type: "number",
     },
     {
       label: "WC ir vonios plotas:",
       value: propertyDescription.bathroomArea,
       name: "bathroomArea",
       symbol: "m²",
+      type: "number",
     },
   ];
 
@@ -124,15 +132,6 @@ const EstimateCalculator = () => {
   const tilesSum = specialityTotalSum(tiles, Tiles);
   const othersSum = specialityTotalSum(other, Other);
 
-  // const allSpecialitiesSums = {
-  //   electricitySum: electricitySum,
-  //   flooringSum: flooringSum,
-  //   wallsSum: wallsSum,
-  //   bathroomSum: bathroomSum,
-  //   tilesSum: tilesSum,
-  //   othersSum: othersSum,
-  // };
-
   const allSpecialitiesSums = [
     { name: "Elektros darbai", value: electricitySum },
     { name: "Santechnikos darbai", value: bathroomSum },
@@ -141,13 +140,6 @@ const EstimateCalculator = () => {
     { name: "Plytelių klojimo darbai", value: tilesSum },
     { name: "Kiti darbai", value: othersSum },
   ];
-
-  // ["Elektros darbai"]: electricitySum,
-  // ["Santechnikos darbai"]: bathroomSum,
-  // ["Sienų/lubų darbai"]: wallsSum,
-  // ["Grindų klojimo darbai"]: flooringSum,
-  // ["Plytelių klojimo darbai"]: tilesSum,
-  // ["Kiti darbai"]: othersSum,
 
   const totalSum = () => {
     const arr = allSpecialitiesSums.map((item) => {
@@ -190,7 +182,6 @@ const EstimateCalculator = () => {
         tabPanel={tabPanel}
         handleInputChange={handleInputChange}
       />
-      {/* <TotalSumContainer title="Viso" sumValue={totalSum()} /> */}
     </div>
   );
 };

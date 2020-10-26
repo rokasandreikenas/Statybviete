@@ -1,0 +1,19 @@
+$shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+
+.property-info-container {
+  border: 1px solid #428bff;
+  padding: 15px 30px 5px 30px;
+  border-radius: 5px;
+  width: 450px;
+
+  .input-group :nth-child(1) {
+    input {
+      color: red;
+    }
+    input:nth-child(1) {
+      width: 40%;
+    }
+
+    // color: red;
+  }
+}
