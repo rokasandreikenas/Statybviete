@@ -12,6 +12,7 @@ const ExportButton = ({
   allSpecialitiesSums,
   totalSum,
   tabPanel,
+  propertyInfo,
 }) => {
   return (
     <div className="export-button">
@@ -22,6 +23,7 @@ const ExportButton = ({
               allSpecialitiesSums={allSpecialitiesSums}
               totalSum={totalSum}
               workInfo={tabPanel}
+              propertyInfo={propertyInfo}
             />
           }
           fileName="samata.pdf"

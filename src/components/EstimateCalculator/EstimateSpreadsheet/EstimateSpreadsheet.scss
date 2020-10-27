@@ -54,3 +54,9 @@
     padding: 8px 16px;
   }
 }
+
+@include mobile {
+  .react-tabs__tab-list {
+    display: block;
+  }
+}

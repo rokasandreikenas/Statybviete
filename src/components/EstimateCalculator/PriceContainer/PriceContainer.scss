@@ -5,6 +5,7 @@
   font-size: 16px;
   border-radius: 5px;
   margin-bottom: 30px;
+  width: 400px;
 
   .prices {
     background: #ececec;
@@ -12,7 +13,7 @@
     padding: 15px 30px 5px 30px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    width: 450px;
+    width: 100%;
   }
 
   .input-group .input {
@@ -27,7 +28,7 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border: 1px solid #428bff;
-  width: 450px;
+  width: 100%;
 
   .input {
     color: #ffffff;

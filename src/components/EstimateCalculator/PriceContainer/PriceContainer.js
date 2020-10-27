@@ -3,7 +3,7 @@ import InputGroup from "../../InputGroup";
 
 import "./PriceContainer.scss";
 
-const PriceContainer = ({ allSpecialitiesSums }) => {
+const PriceContainer = ({ allSpecialitiesSums, totalSum }) => {
   return (
     <div className="price-container">
       <div className="prices">
@@ -19,7 +19,13 @@ const PriceContainer = ({ allSpecialitiesSums }) => {
         ))}
       </div>
       <div className="total-sum">
-        <InputGroup value={0} readOnly label="Viso: " name="Viso" symbol="€" />
+        <InputGroup
+          value={totalSum}
+          readOnly
+          label="Viso: "
+          name="Viso"
+          symbol="€"
+        />
       </div>
     </div>
   );

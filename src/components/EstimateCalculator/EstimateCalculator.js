@@ -162,6 +162,7 @@ const EstimateCalculator = () => {
           allSpecialitiesSums={allSpecialitiesSums}
           totalSum={totalSum()}
           tabPanel={tabPanel}
+          propertyInfo={propertyInfo}
         />
       </div>
       <div className="property-info">
@@ -174,7 +175,10 @@ const EstimateCalculator = () => {
           />
         </div>
         <div className="work-prices">
-          <PriceContainer allSpecialitiesSums={allSpecialitiesSums} />
+          <PriceContainer
+            allSpecialitiesSums={allSpecialitiesSums}
+            totalSum={totalSum()}
+          />
         </div>
       </div>
       <EstimateSpreadsheet

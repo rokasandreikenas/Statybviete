@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
   },
 });
-const PDFfile = ({ allSpecialitiesSums, totalSum, workInfo }) => {
+const PDFfile = ({ allSpecialitiesSums, totalSum, workInfo, propertyInfo }) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -107,52 +107,30 @@ const PDFfile = ({ allSpecialitiesSums, totalSum, workInfo }) => {
         </View>
         <View style={styles.summaryContainer}>
           <View style={styles.summary}>
-            <View style={styles.summaryText}>
-              <Text style={styles.summaryText.title}>Kambarių skaičius:</Text>
-              <Text style={styles.summaryText.value}>0</Text>
-            </View>
-            <View style={styles.summaryText}>
-              <Text style={styles.summaryText.title}>Kambarių plotas:</Text>
-              <Text style={styles.summaryText.value}>0 m2</Text>
-            </View>
-            <View style={styles.summaryText}>
-              <Text style={styles.summaryText.title}>WC ir vonios plotas:</Text>
-              <Text style={styles.summaryText.value}>0 m2</Text>
-            </View>
+            {propertyInfo.map((info, index) => (
+              <View style={styles.summaryText} key={index}>
+                <Text style={styles.summaryText.title}>{info.label}</Text>
+                <Text style={styles.summaryText.value}>{info.value}</Text>
+              </View>
+            ))}
           </View>
           <View style={styles.summary}>
             <View style={styles.priceContainer}>
-              <View style={styles.summaryText}>
-                <Text style={styles.summaryText.title}>Dažymo darbai:</Text>
-                <Text style={styles.summaryText.value}>0 €</Text>
-              </View>
-              <View style={styles.summaryText}>
-                <Text style={styles.summaryText.title}>
-                  Grindų klojimo darbai:
-                </Text>
-                <Text style={styles.summaryText.value}>0 €</Text>
-              </View>
-              <View style={styles.summaryText}>
-                <Text style={styles.summaryText.title}>Elektros darbai:</Text>
-                <Text style={styles.summaryText.value}>0 €</Text>
-              </View>
-              <View style={styles.summaryText}>
-                <Text style={styles.summaryText.title}>
-                  Vonios įrengimo darbai:
-                </Text>
-                <Text style={styles.summaryText.value}>0 €</Text>
-              </View>
-              <View style={styles.summaryText}>
-                <Text style={styles.summaryText.title}>
-                  Plytelių klijavimo darbai:
-                </Text>
-                <Text style={styles.summaryText.value}>0 €</Text>
-              </View>
+              {allSpecialitiesSums.map((speciality, index) => (
+                <View style={styles.summaryText} key={index}>
+                  <Text style={styles.summaryText.title}>
+                    {speciality.name}
+                  </Text>
+                  <Text style={styles.summaryText.value}>
+                    {speciality.value} €
+                  </Text>
+                </View>
+              ))}
             </View>
             <View style={styles.totalSum}>
               <View style={styles.summaryText}>
                 <Text style={styles.summaryText.title}>Viso:</Text>
-                <Text style={styles.summaryText.value}>0 €</Text>
+                <Text style={styles.summaryText.value}>{totalSum} €</Text>
               </View>
             </View>
           </View>
