@@ -150,7 +150,7 @@ const EstimateCalculator = () => {
   };
 
   if (Object.keys(walls).length === 0) {
-    return <div>...</div>;
+    return null;
   }
 
   return (

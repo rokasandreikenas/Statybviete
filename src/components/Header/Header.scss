@@ -1,9 +1,49 @@
+@import "../../scss/breakpoints";
+
 .header-container {
-  display: inline;
+  display: flex;
+  justify-content: space-between;
 
   img {
     width: 125px;
     height: 125px;
     cursor: pointer;
+  }
+
+  .header-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 80px;
+    }
+
+    img {
+      width: 32px;
+    }
+
+    a {
+      margin-left: 10px;
+      text-decoration: none;
+      color: #6cbcc3;
+      font-size: 24px;
+    }
+  }
+}
+
+@include mobile-tablet {
+  .header-container {
+    flex-direction: column;
+    .header-center {
+      flex-direction: column;
+      align-items: baseline;
+      div {
+        margin-left: 0px;
+      }
+    }
   }
 }

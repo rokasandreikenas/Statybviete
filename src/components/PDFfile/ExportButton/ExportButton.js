@@ -28,7 +28,7 @@ const ExportButton = ({
           }
           fileName="samata.pdf"
         >
-          {({ blob, url, loading, error }) => (
+          {({ loading }) => (
             <Button className={loading ? "button loading" : "button"}>
               <img src={file} alt={file} />
               <span>Atsisiųsti PDF</span>

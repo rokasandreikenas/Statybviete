@@ -25,14 +25,14 @@
   a:active,
   a.active {
     /* background: #fbde44ff; */
-    border-color: #ffd73c;
-    color: #ffd73c;
+    border-color: #6cbcc3;
+    color: #6cbcc3;
   }
 
   button {
     cursor: pointer;
-    border: 1px solid#ffd73c;
-    color: #ffd73c;
+    border: 1px solid#6cbcc3;
+    color: #6cbcc3;
     background: transparent;
     padding: 0.5rem;
     font: inherit;
@@ -44,7 +44,7 @@
 
   button:hover,
   button:active {
-    background: #ffd73c;
+    background: #6cbcc3;
     color: white;
   }
 }
@@ -71,7 +71,7 @@
     button:hover,
     button:active {
       background: #ffffff;
-      color: #ffd73c;
+      color: #6cbcc3;
     }
   }
 }

@@ -27,11 +27,11 @@ const styles = StyleSheet.create({
   summaryText: {
     display: "flex",
     flexDirection: "row",
-    width: 200,
+    width: 250,
     title: {
-      width: "70%",
+      width: "60%",
     },
-    value: { width: "30%" },
+    value: { width: "40%" },
   },
 
   priceContainer: {
