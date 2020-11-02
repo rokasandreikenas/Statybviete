@@ -1,13 +1,11 @@
 import React from "react";
-import ContentTitle from "../../components/ContentTitle";
+import AboutUsContainer from "../../components/AboutUsContainer";
 import "./Home.scss";
 
 const Home = () => {
   return (
     <section className="home-page">
-      <ContentTitle>Apie mus</ContentTitle>
-
-      <div className="container"></div>
+      <AboutUsContainer />
     </section>
   );
 };

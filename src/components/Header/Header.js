@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/icons/logo.png";
 import Phone from "../../assets/icons/phone.svg";
 import Mail from "../../assets/icons/mail.svg";
+import { MAIL, PHONE } from "../../static/ContactInfo";
 
 import "./Header.scss";
 const Header = () => {
@@ -15,13 +16,11 @@ const Header = () => {
         <div className="header-center">
           <div>
             <img src={Phone} alt="phone" />
-            <a href="tel:+37067133876">+370 671 876</a>
+            <a href={`tel:${PHONE}`}>{PHONE}</a>
           </div>
           <div>
             <img src={Mail} alt="mail" />
-            <a href="mailto:andreikenas.rokas@gmail.com">
-              andreikenas.rokas@gmail.com
-            </a>
+            <a href={`mailto:${MAIL}`}>{MAIL}</a>
           </div>
         </div>
       </div>

@@ -92,6 +92,11 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     borderTopWidth: 0,
   },
+  tableCellFirst: {
+    marginLeft: 5,
+    marginTop: 5,
+    fontSize: 10,
+  },
   tableCell: {
     margin: "auto",
     marginTop: 5,
@@ -110,7 +115,9 @@ const PDFfile = ({ allSpecialitiesSums, totalSum, workInfo, propertyInfo }) => {
             {propertyInfo.map((info, index) => (
               <View style={styles.summaryText} key={index}>
                 <Text style={styles.summaryText.title}>{info.label}</Text>
-                <Text style={styles.summaryText.value}>{info.value}</Text>
+                <Text style={styles.summaryText.value}>
+                  {info.value} {info.symbol}
+                </Text>
               </View>
             ))}
           </View>
@@ -119,7 +126,7 @@ const PDFfile = ({ allSpecialitiesSums, totalSum, workInfo, propertyInfo }) => {
               {allSpecialitiesSums.map((speciality, index) => (
                 <View style={styles.summaryText} key={index}>
                   <Text style={styles.summaryText.title}>
-                    {speciality.name}
+                    {index + 1}. {speciality.name}
                   </Text>
                   <Text style={styles.summaryText.value}>
                     {speciality.value} €
@@ -158,8 +165,9 @@ const PDFfile = ({ allSpecialitiesSums, totalSum, workInfo, propertyInfo }) => {
             </View>
           </View>
 
-          {workInfo.map((work) => {
+          {workInfo.map((work, index) => {
             const inputs = Object.values(work.inputs);
+            const number = index + 1;
             return work.list.map((item, index) => {
               const title = item.title;
               const price = item.price;
@@ -169,7 +177,9 @@ const PDFfile = ({ allSpecialitiesSums, totalSum, workInfo, propertyInfo }) => {
               return (
                 <View style={styles.tableRow} key={index}>
                   <View style={styles.tableColFirst}>
-                    <Text style={styles.tableCell}>{title}</Text>
+                    <Text style={styles.tableCellFirst}>
+                      {number}.{index + 1} {title}
+                    </Text>
                   </View>
                   <View style={styles.tableCol}>
                     <Text style={styles.tableCell}>{price}</Text>

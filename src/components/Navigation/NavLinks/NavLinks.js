@@ -16,9 +16,6 @@ const NavLinks = () => {
       <li>
         <NavLink to="/kontaktai">KONTAKTAI</NavLink>
       </li>
-      <li>
-        <NavLink to="/galerija">GALERIJA</NavLink>
-      </li>
     </ul>
   );
 };

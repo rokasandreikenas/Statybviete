@@ -1,3 +1,5 @@
+@import "../../../scss/colors";
+
 .nav-links {
   list-style: none;
   margin: 0;
@@ -24,15 +26,14 @@
   a:hover,
   a:active,
   a.active {
-    /* background: #fbde44ff; */
-    border-color: #6cbcc3;
-    color: #6cbcc3;
+    border-color: $main-green;
+    color: $main-green;
   }
 
   button {
     cursor: pointer;
-    border: 1px solid#6cbcc3;
-    color: #6cbcc3;
+    border: 1px solid$main-green;
+    color: $main-green;
     background: transparent;
     padding: 0.5rem;
     font: inherit;
@@ -44,7 +45,7 @@
 
   button:hover,
   button:active {
-    background: #6cbcc3;
+    background: $main-green;
     color: white;
   }
 }
@@ -71,7 +72,7 @@
     button:hover,
     button:active {
       background: #ffffff;
-      color: #6cbcc3;
+      color: $main-green;
     }
   }
 }

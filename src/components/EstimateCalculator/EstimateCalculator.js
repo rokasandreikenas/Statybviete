@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
 import TabInfo from "../../static/TabInfo";
-import Electricity from "../../static/Electricity";
-import Flooring from "../../static/Flooring";
-import Walls from "../../static/Walls";
-import Bathroom from "../../static/Bathroom";
-import Tiles from "../../static/Tiles";
-import Other from "../../static/Other";
+import Electricity from "../../api/Electricity";
+import Flooring from "../../api/Flooring";
+import Walls from "../../api/Walls";
+import Bathroom from "../../api/Bathroom";
+import Tiles from "../../api/Tiles";
+import Other from "../../api/Other";
 import "./EstimateCalculator.scss";
 import ExportButton from "../PDFfile/ExportButton/ExportButton";
 import PriceContainer from "./PriceContainer";
@@ -135,7 +135,7 @@ const EstimateCalculator = () => {
   const allSpecialitiesSums = [
     { name: "Elektros darbai", value: electricitySum },
     { name: "Santechnikos darbai", value: bathroomSum },
-    { name: "Sienų/lubų darbai", value: wallsSum },
+    { name: "Sienų/Lubų darbai", value: wallsSum },
     { name: "Grindų klojimo darbai", value: flooringSum },
     { name: "Plytelių klojimo darbai", value: tilesSum },
     { name: "Kiti darbai", value: othersSum },

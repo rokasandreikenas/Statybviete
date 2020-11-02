@@ -1,4 +1,5 @@
 @import "../../scss/breakpoints";
+@import "../../scss/colors";
 
 .header-container {
   display: flex;
@@ -29,7 +30,7 @@
     a {
       margin-left: 10px;
       text-decoration: none;
-      color: #6cbcc3;
+      color: $main-green;
       font-size: 24px;
     }
   }
