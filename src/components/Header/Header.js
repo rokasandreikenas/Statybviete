@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/icons/logo.png";
 import Phone from "../../assets/icons/phone.svg";
 import Mail from "../../assets/icons/mail.svg";
-import { MAIL, PHONE } from "../../static/ContactInfo";
+import { MAIL, PHONE, PHONE_WITH_SPACES } from "../../static/ContactInfo";
 
 import "./Header.scss";
 const Header = () => {
@@ -16,7 +16,7 @@ const Header = () => {
         <div className="header-center">
           <div>
             <img src={Phone} alt="phone" />
-            <a href={`tel:${PHONE}`}>{PHONE}</a>
+            <a href={`tel:${PHONE}`}>{PHONE_WITH_SPACES}</a>
           </div>
           <div>
             <img src={Mail} alt="mail" />

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 
 import TabInfo from "../../static/TabInfo";
-import Electricity from "../../api/Electricity";
-import Flooring from "../../api/Flooring";
-import Walls from "../../api/Walls";
-import Bathroom from "../../api/Bathroom";
-import Tiles from "../../api/Tiles";
-import Other from "../../api/Other";
+import Jobs from "../../api/Jobs";
+// import Electricity from "../../api/Electricity";
+// import Flooring from "../../api/Flooring";
+// import Walls from "../../api/Walls";
+// import Bathroom from "../../api/Bathroom";
+// import Tiles from "../../api/Tiles";
+// import Other from "../../api/Other";
 import "./EstimateCalculator.scss";
 import ExportButton from "../PDFfile/ExportButton/ExportButton";
 import PriceContainer from "./PriceContainer";
@@ -28,7 +29,7 @@ const EstimateCalculator = () => {
   const [other, setOther] = useState({});
 
   const [documentGenerated, setDocumentGenerated] = useState(false);
-
+  const { Electricity, Flooring, Walls, Bathroom, Tiles, Other } = Jobs;
   useEffect(() => {
     setElectricity(createObjectOfInputs(Electricity));
     setFlooring(createObjectOfInputs(Flooring));
@@ -36,7 +37,7 @@ const EstimateCalculator = () => {
     setBathroom(createObjectOfInputs(Bathroom));
     setTiles(createObjectOfInputs(Tiles));
     setOther(createObjectOfInputs(Other));
-  }, []);
+  }, [Electricity, Flooring, Walls, Bathroom, Tiles, Other]);
 
   const tabPanel = [
     {

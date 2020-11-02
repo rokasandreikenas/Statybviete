@@ -10,6 +10,7 @@ import {
   SATURDAY,
   SUNDAY,
   MAP_SOURCE,
+  PHONE_WITH_SPACES,
 } from "../../static/ContactInfo";
 import "./ContactsContainer.scss";
 const ContactsContainer = () => {
@@ -29,7 +30,7 @@ const ContactsContainer = () => {
             <h3>Kontaktai</h3>
           </div>
           <div className="contacts">
-            <a href={`tel:${PHONE}`}>{PHONE}</a>
+            <a href={`tel:${PHONE}`}>{PHONE_WITH_SPACES}</a>
             <a href={`tel:${MAIL}`}>{MAIL}</a>
           </div>
         </div>

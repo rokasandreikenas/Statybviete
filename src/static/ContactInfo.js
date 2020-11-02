@@ -1,5 +1,6 @@
 export const MAIL = "andreikenas.rokas@gmail.com";
-export const PHONE = "+370 671 33876";
+export const PHONE = "+37067133876";
+export const PHONE_WITH_SPACES = "+370 671 33876";
 export const ADDRESS = "Bajorų kel. 27-20, LT-08467 Vilnius";
 export const WEEK_DAYS = "8:00 - 17:00";
 export const SATURDAY = "10:00 - 14:00";
