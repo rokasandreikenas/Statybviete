@@ -11,14 +11,16 @@ const AboutUsContainer = () => {
           įgyvendiname individualius projektus Vilniuje.
         </p>
         <div className="skills">
-          <span>Eletros darbai</span>
-          <span>Santechnikos darbai</span>
-          <span>Sienų/Lubų darbai</span>
-        </div>
-        <div className="skills">
-          <span>Grindų klojimo darbai</span>
-          <span>Plytelių klojimo darbai</span>
-          <span>Kiti darbai</span>
+          <div className="first">
+            <span>Eletros darbai</span>
+            <span>Santechnikos darbai</span>
+            <span>Sienų/Lubų darbai</span>
+          </div>
+          <div className="second">
+            <span>Grindų klojimo darbai</span>
+            <span>Plytelių klojimo darbai</span>
+            <span>Kiti darbai</span>
+          </div>
         </div>
       </div>
     </div>

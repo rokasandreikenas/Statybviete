@@ -27,10 +27,18 @@
 
     .skills {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
       font-weight: 700;
       font-size: 13px;
       margin-top: 12px;
+      width: 100%;
+
+      .first,
+      .second {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
 
       span {
         width: 33%;
@@ -59,13 +67,27 @@
 
 @media screen and (max-width: 600px) {
   .about-section {
-    padding: 75px 30px;
+    padding: 30px;
 
     .inner-container {
-      padding: 60px;
+      padding: 0px 40px 20px;
 
-      span {
-        padding-right: 10px;
+      .skills {
+        flex-direction: row;
+
+        .first,
+        .second {
+          flex-direction: column;
+          width: 50%;
+        }
+
+        .second {
+          margin-left: 10px;
+        }
+        span {
+          width: 100%;
+          padding-bottom: 8px;
+        }
       }
     }
   }
