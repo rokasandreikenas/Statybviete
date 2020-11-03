@@ -8,7 +8,7 @@ const AboutUsContainer = () => {
         <p className="text">
           Pasinaudodami patirtimi ir profesionalumu apdailos srityje,
           pasitelkdami technines naujoves ir tvarius statybos sprendimus
-          įgivendiname individualius projektus Vilniuje.
+          įgyvendiname individualius projektus Vilniuje.
         </p>
         <div className="skills">
           <span>Eletros darbai</span>
