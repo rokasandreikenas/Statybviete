@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Statybviete/static/css/main.fe1ee6ec.chunk.css",
-    "main.js": "/Statybviete/static/js/main.7ca9c015.chunk.js",
-    "main.js.map": "/Statybviete/static/js/main.7ca9c015.chunk.js.map",
+    "main.js": "/Statybviete/static/js/main.f22a53bd.chunk.js",
+    "main.js.map": "/Statybviete/static/js/main.f22a53bd.chunk.js.map",
     "runtime-main.js": "/Statybviete/static/js/runtime-main.8796b768.js",
     "runtime-main.js.map": "/Statybviete/static/js/runtime-main.8796b768.js.map",
     "static/css/2.5c17b9f1.chunk.css": "/Statybviete/static/css/2.5c17b9f1.chunk.css",
     "static/js/2.70612150.chunk.js": "/Statybviete/static/js/2.70612150.chunk.js",
     "static/js/2.70612150.chunk.js.map": "/Statybviete/static/js/2.70612150.chunk.js.map",
     "index.html": "/Statybviete/index.html",
-    "precache-manifest.1cc7b6cafe426a8193e4d08fa838627d.js": "/Statybviete/precache-manifest.1cc7b6cafe426a8193e4d08fa838627d.js",
+    "precache-manifest.97849bcded1e16472a626913b599e713.js": "/Statybviete/precache-manifest.97849bcded1e16472a626913b599e713.js",
     "service-worker.js": "/Statybviete/service-worker.js",
     "static/css/2.5c17b9f1.chunk.css.map": "/Statybviete/static/css/2.5c17b9f1.chunk.css.map",
     "static/css/main.fe1ee6ec.chunk.css.map": "/Statybviete/static/css/main.fe1ee6ec.chunk.css.map",
@@ -35,6 +35,6 @@
     "static/css/2.5c17b9f1.chunk.css",
     "static/js/2.70612150.chunk.js",
     "static/css/main.fe1ee6ec.chunk.css",
-    "static/js/main.7ca9c015.chunk.js"
+    "static/js/main.f22a53bd.chunk.js"
   ]
 }

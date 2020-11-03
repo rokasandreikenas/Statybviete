@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "65dc4474259bd832fb3a1ee2eff93b44",
+    "revision": "9836d57d1c3647efd6d1b7a5823c0227",
     "url": "/Statybviete/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Statybviete/static/css/2.5c17b9f1.chunk.css"
   },
   {
-    "revision": "81cf4cd94a7682fcf998",
+    "revision": "a98dfbf1f092869ab1db",
     "url": "/Statybviete/static/css/main.fe1ee6ec.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Statybviete/static/js/2.70612150.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "81cf4cd94a7682fcf998",
-    "url": "/Statybviete/static/js/main.7ca9c015.chunk.js"
+    "revision": "a98dfbf1f092869ab1db",
+    "url": "/Statybviete/static/js/main.f22a53bd.chunk.js"
   },
   {
     "revision": "51149c862e0627ca0b9f",
