@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Statybviete/static/css/main.99be25b8.chunk.css",
+    "main.css": "/Statybviete/static/css/main.fe1ee6ec.chunk.css",
     "main.js": "/Statybviete/static/js/main.7ca9c015.chunk.js",
     "main.js.map": "/Statybviete/static/js/main.7ca9c015.chunk.js.map",
     "runtime-main.js": "/Statybviete/static/js/runtime-main.8796b768.js",
@@ -9,10 +9,10 @@
     "static/js/2.70612150.chunk.js": "/Statybviete/static/js/2.70612150.chunk.js",
     "static/js/2.70612150.chunk.js.map": "/Statybviete/static/js/2.70612150.chunk.js.map",
     "index.html": "/Statybviete/index.html",
-    "precache-manifest.e8f660b1d5f7c91712cdeb3a1ad7d000.js": "/Statybviete/precache-manifest.e8f660b1d5f7c91712cdeb3a1ad7d000.js",
+    "precache-manifest.1cc7b6cafe426a8193e4d08fa838627d.js": "/Statybviete/precache-manifest.1cc7b6cafe426a8193e4d08fa838627d.js",
     "service-worker.js": "/Statybviete/service-worker.js",
     "static/css/2.5c17b9f1.chunk.css.map": "/Statybviete/static/css/2.5c17b9f1.chunk.css.map",
-    "static/css/main.99be25b8.chunk.css.map": "/Statybviete/static/css/main.99be25b8.chunk.css.map",
+    "static/css/main.fe1ee6ec.chunk.css.map": "/Statybviete/static/css/main.fe1ee6ec.chunk.css.map",
     "static/js/2.70612150.chunk.js.LICENSE.txt": "/Statybviete/static/js/2.70612150.chunk.js.LICENSE.txt",
     "static/media/Poppins-Regular.ttf": "/Statybviete/static/media/Poppins-Regular.8b6af8e5.ttf",
     "static/media/EstimateSpreadsheet.scss": "/Statybviete/static/media/bathtub-blue.a56c87ca.svg",
@@ -34,7 +34,7 @@
     "static/js/runtime-main.8796b768.js",
     "static/css/2.5c17b9f1.chunk.css",
     "static/js/2.70612150.chunk.js",
-    "static/css/main.99be25b8.chunk.css",
+    "static/css/main.fe1ee6ec.chunk.css",
     "static/js/main.7ca9c015.chunk.js"
   ]
 }
