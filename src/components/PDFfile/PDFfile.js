@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
   summaryContainer: { display: "flex", flexDirection: "row", margin: 20 },
   summary: {
     width: "50%",
-    paddingBottom: 40,
     fontSize: 12,
   },
   summaryText: {
@@ -52,12 +51,13 @@ const styles = StyleSheet.create({
 
   heading: {
     fontSize: 24,
-    margin: 20,
+    marginLeft: 20,
+    marginTop: 10,
   },
 
   date: {
     marginLeft: 20,
-    marginTop: 20,
+    marginTop: 10,
     fontSize: 10,
   },
 
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRightWidth: 0,
     borderBottomWidth: 0,
-    marginBottom: 20,
+    marginBottom: 10,
     marginLeft: 20,
     marginRight: 20,
   },
