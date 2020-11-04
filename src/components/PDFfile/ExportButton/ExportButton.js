@@ -26,7 +26,7 @@ const ExportButton = ({
               propertyInfo={propertyInfo}
             />
           }
-          fileName="samata.pdf"
+          fileName="Sąmata.pdf"
         >
           {({ loading }) => (
             <Button className={loading ? "button loading" : "button"}>

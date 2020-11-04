@@ -2,12 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import TabInfo from "../../static/TabInfo";
 import Jobs from "../../api/Jobs";
-// import Electricity from "../../api/Electricity";
-// import Flooring from "../../api/Flooring";
-// import Walls from "../../api/Walls";
-// import Bathroom from "../../api/Bathroom";
-// import Tiles from "../../api/Tiles";
-// import Other from "../../api/Other";
 import "./EstimateCalculator.scss";
 import ExportButton from "../PDFfile/ExportButton/ExportButton";
 import PriceContainer from "./PriceContainer";

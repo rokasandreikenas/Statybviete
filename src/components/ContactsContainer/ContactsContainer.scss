@@ -25,9 +25,11 @@
       font-weight: 300;
       .header {
         display: flex;
+        align-items: center;
 
         img {
           width: 24px;
+          height: 24px;
           margin-right: 10px;
         }
       }
