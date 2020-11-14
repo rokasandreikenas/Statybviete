@@ -2,6 +2,7 @@ import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import EstimateTable from "./EstimateTable/EstimateTable";
+import PropTypes from "prop-types";
 
 import "./EstimateSpreadsheet.scss";
 const EstimateSpreadsheet = ({ tabInfo, tabPanel, handleInputChange }) => {
@@ -31,6 +32,12 @@ const EstimateSpreadsheet = ({ tabInfo, tabPanel, handleInputChange }) => {
       })}
     </Tabs>
   );
+};
+
+EstimateSpreadsheet.propTypes = {
+  tabInfo: PropTypes.array.isRequired,
+  tabPanel: PropTypes.array.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
 };
 
 export default EstimateSpreadsheet;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import "./Input.scss";
 const Input = ({ type, value, onChange, name, ...rest }) => {
@@ -12,6 +13,13 @@ const Input = ({ type, value, onChange, name, ...rest }) => {
       name={name}
     />
   );
+};
+
+Input.propTypes = {
+  type: PropTypes.string.isRequired,
+  value: PropTypes.any.isRequired,
+  onChange: PropTypes.func,
+  name: PropTypes.string.isRequired,
 };
 
 export default Input;

@@ -4,6 +4,7 @@ import file from "../../../assets/icons/file.svg";
 import gear from "../../../assets/icons/settings.svg";
 import PDFfile from "../../PDFfile/PDFfile";
 import Button from "../../Button";
+import PropTypes from "prop-types";
 
 import "./ExportButton.scss";
 const ExportButton = ({
@@ -43,6 +44,15 @@ const ExportButton = ({
       )}
     </div>
   );
+};
+
+ExportButton.propTypes = {
+  documentGenerated: PropTypes.bool.isRequired,
+  setDocumentGenerated: PropTypes.func.isRequired,
+  allSpecialitiesSums: PropTypes.array.isRequired,
+  totalSum: PropTypes.number.isRequired,
+  tabPanel: PropTypes.array.isRequired,
+  propertyInfo: PropTypes.array.isRequired,
 };
 
 export default ExportButton;

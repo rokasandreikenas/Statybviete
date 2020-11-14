@@ -1,6 +1,7 @@
 import React from "react";
 import TableHeader from "./TableHeader";
 import TableRow from "./TableRow";
+import PropTypes from "prop-types";
 import "./EstimateTable.scss";
 
 const EstimateTable = ({ list, inputs, handleChange }) => {
@@ -12,7 +13,8 @@ const EstimateTable = ({ list, inputs, handleChange }) => {
           {list.map((item, index) => {
             const inputArrValues = Object.values(inputs);
             const inputArrKeys = Object.keys(inputs);
-            let rowSum = inputArrValues[index] * item.price;
+            const rowSum = inputArrValues[index] * item.price;
+
             return (
               <TableRow
                 key={index}
@@ -28,6 +30,12 @@ const EstimateTable = ({ list, inputs, handleChange }) => {
       </table>
     </div>
   );
+};
+
+EstimateTable.propTypes = {
+  list: PropTypes.array.isRequired,
+  inputs: PropTypes.object.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default EstimateTable;

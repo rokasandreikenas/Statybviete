@@ -1,5 +1,7 @@
 import React from "react";
 import InputGroup from "../../InputGroup";
+import PropTypes from "prop-types";
+
 import "./PropertyInfo.scss";
 const PropertyInfo = ({
   propertyInfo,
@@ -26,6 +28,13 @@ const PropertyInfo = ({
       })}
     </div>
   );
+};
+
+PropertyInfo.propTypes = {
+  propertyInfo: PropTypes.array.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  propertyDescription: PropTypes.object.isRequired,
+  setPropertyDescription: PropTypes.func.isRequired,
 };
 
 export default PropertyInfo;

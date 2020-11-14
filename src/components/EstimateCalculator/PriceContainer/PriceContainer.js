@@ -1,5 +1,6 @@
 import React from "react";
 import InputGroup from "../../InputGroup";
+import PropTypes from "prop-types";
 
 import "./PriceContainer.scss";
 
@@ -10,6 +11,7 @@ const PriceContainer = ({ allSpecialitiesSums, totalSum }) => {
         {allSpecialitiesSums.map((speciality, index) => (
           <InputGroup
             key={index}
+            type="number"
             value={speciality.value}
             readOnly
             label={speciality.name}
@@ -20,6 +22,7 @@ const PriceContainer = ({ allSpecialitiesSums, totalSum }) => {
       </div>
       <div className="total-sum">
         <InputGroup
+          type="number"
           value={totalSum}
           readOnly
           label="Viso: "
@@ -29,6 +32,11 @@ const PriceContainer = ({ allSpecialitiesSums, totalSum }) => {
       </div>
     </div>
   );
+};
+
+PriceContainer.propTypes = {
+  allSpecialitiesSums: PropTypes.array.isRequired,
+  totalSum: PropTypes.number.isRequired,
 };
 
 export default PriceContainer;
