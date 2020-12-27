@@ -6,4 +6,4 @@ export const WEEK_DAYS = "8:00 - 17:00";
 export const SATURDAY = "10:00 - 14:00";
 export const SUNDAY = "nedirbame";
 export const MAP_SOURCE =
-  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9224.74369746977!2d25.261708437779657!3d54.688755787475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd940f28c9f5ef%3A0x436260edb229adee!2sCenter%2C%20Vilnius%2001107!5e0!3m2!1sen!2slt!4v1604128745845!5m2!1sen!2slt";
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9209.037472174932!2d25.250108073748518!3d54.75782635795045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dd90fc17fa75ab%3A0x89cf69f33151a96d!2sBajor%C5%B3%20kl.%2027%2C%20Vilnius%2008426!5e0!3m2!1sen!2slt!4v1609063306329!5m2!1sen!2slt";
