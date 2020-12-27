@@ -15,6 +15,10 @@ const Calculator = () => {
     };
 
     fetchData();
+
+    return () => {
+      setJobs([]);
+    };
   }, []);
 
   return (
