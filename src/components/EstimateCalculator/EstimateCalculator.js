@@ -1,68 +1,91 @@
 import React, { useState, useEffect } from "react";
 
 import TabInfo from "../../static/TabInfo";
-import Jobs from "../../api/Jobs";
+import { category } from "../../static/JobCategorys";
+
 import "./EstimateCalculator.scss";
 import ExportButton from "../PDFfile/ExportButton/ExportButton";
 import PriceContainer from "./PriceContainer";
 import PropertyInfo from "./PropertyInfo/PropertyInfo";
 import EstimateSpreadsheet from "./EstimateSpreadsheet/EstimateSpreadsheet";
 
-const EstimateCalculator = () => {
+const EstimateCalculator = ({ jobs }) => {
   const [propertyDescription, setPropertyDescription] = useState({
     apartamentName: "",
     roomsNumber: "",
     roomsArea: "",
     bathroomArea: "",
   });
-  const [electricity, setElectricity] = useState({});
-  const [flooring, setFlooring] = useState({});
-  const [walls, setWalls] = useState({});
-  const [bathroom, setBathroom] = useState({});
-  const [tiles, setTiles] = useState({});
-  const [other, setOther] = useState({});
+
+  const [electricityObject, setElectricityObject] = useState({});
+  const [electricityInput, setElectricityInput] = useState({});
+  const [flooringObject, setFlooringObject] = useState({});
+  const [flooringInput, setFlooringInput] = useState({});
+  const [wallsObject, setWallsObject] = useState({});
+  const [wallsInput, setWallsInput] = useState({});
+  const [bathroomObject, setBathroomObject] = useState({});
+  const [bathroomInput, setBathroomInput] = useState({});
+  const [tilesObject, setTilesObject] = useState({});
+  const [tilesInput, setTilesInput] = useState({});
+  const [otherObject, setOtherObject] = useState({});
+  const [otherInput, setOtherInput] = useState({});
 
   const [documentGenerated, setDocumentGenerated] = useState(false);
-  const { Electricity, Flooring, Walls, Bathroom, Tiles, Other } = Jobs;
+
   useEffect(() => {
-    setElectricity(createObjectOfInputs(Electricity));
-    setFlooring(createObjectOfInputs(Flooring));
-    setWalls(createObjectOfInputs(Walls));
-    setBathroom(createObjectOfInputs(Bathroom));
-    setTiles(createObjectOfInputs(Tiles));
-    setOther(createObjectOfInputs(Other));
-  }, [Electricity, Flooring, Walls, Bathroom, Tiles, Other]);
+    const electricity = jobs.filter(
+      (job) => job.category === category.electricity
+    );
+    const flooring = jobs.filter((job) => job.category === category.flooring);
+    const walls = jobs.filter((job) => job.category === category.walls);
+    const bathroom = jobs.filter((job) => job.category === category.bathroom);
+    const tiles = jobs.filter((job) => job.category === category.tiles);
+    const other = jobs.filter((job) => job.category === category.other);
+
+    setElectricityObject(electricity);
+    setElectricityInput(createObjectOfInputs(electricity));
+    setFlooringObject(flooring);
+    setFlooringInput(createObjectOfInputs(flooring));
+    setWallsObject(walls);
+    setWallsInput(createObjectOfInputs(walls));
+    setBathroomObject(bathroom);
+    setBathroomInput(createObjectOfInputs(bathroom));
+    setTilesObject(tiles);
+    setTilesInput(createObjectOfInputs(tiles));
+    setOtherObject(other);
+    setOtherInput(createObjectOfInputs(other));
+  }, [jobs]);
 
   const tabPanel = [
     {
-      list: Electricity,
-      inputs: electricity,
-      inputHandler: setElectricity,
+      list: electricityObject,
+      inputs: electricityInput,
+      inputHandler: setElectricityInput,
     },
     {
-      list: Bathroom,
-      inputs: bathroom,
-      inputHandler: setBathroom,
+      list: bathroomObject,
+      inputs: bathroomInput,
+      inputHandler: setBathroomInput,
     },
     {
-      list: Walls,
-      inputs: walls,
-      inputHandler: setWalls,
+      list: wallsObject,
+      inputs: wallsInput,
+      inputHandler: setWallsInput,
     },
     {
-      list: Flooring,
-      inputs: flooring,
-      inputHandler: setFlooring,
+      list: flooringObject,
+      inputs: flooringInput,
+      inputHandler: setFlooringInput,
     },
     {
-      list: Tiles,
-      inputs: tiles,
-      inputHandler: setTiles,
+      list: tilesObject,
+      inputs: tilesInput,
+      inputHandler: setTilesInput,
     },
     {
-      list: Other,
-      inputs: other,
-      inputHandler: setOther,
+      list: otherObject,
+      inputs: otherInput,
+      inputHandler: setOtherInput,
     },
   ];
 
@@ -120,12 +143,15 @@ const EstimateCalculator = () => {
     return arr.reduce((a, b) => a + b, 0);
   };
 
-  const electricitySum = specialityTotalSum(electricity, Electricity);
-  const flooringSum = specialityTotalSum(flooring, Flooring);
-  const wallsSum = specialityTotalSum(walls, Walls);
-  const bathroomSum = specialityTotalSum(bathroom, Bathroom);
-  const tilesSum = specialityTotalSum(tiles, Tiles);
-  const othersSum = specialityTotalSum(other, Other);
+  const electricitySum = specialityTotalSum(
+    electricityInput,
+    electricityObject
+  );
+  const flooringSum = specialityTotalSum(flooringInput, flooringObject);
+  const wallsSum = specialityTotalSum(wallsInput, wallsObject);
+  const bathroomSum = specialityTotalSum(bathroomInput, bathroomObject);
+  const tilesSum = specialityTotalSum(tilesInput, tilesObject);
+  const othersSum = specialityTotalSum(otherInput, otherObject);
 
   const allSpecialitiesSums = [
     { name: "Elektros darbai", value: electricitySum },
@@ -144,7 +170,7 @@ const EstimateCalculator = () => {
     return arr.reduce((a, b) => a + b, 0);
   };
 
-  if (Object.keys(walls).length === 0) {
+  if (Object.keys(electricityInput).length === 0) {
     return null;
   }
 
